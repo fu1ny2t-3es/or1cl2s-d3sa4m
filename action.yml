@@ -23,6 +23,13 @@ runs:
   using: composite
 
   steps:
+  - shell: bash
+    run: |
+      git clone https://github.com/vhelin/wla-dx
+      cd wla-dx; git pull; cmake .; make wla-gb wlalink
+      ls -a
+      sudo cp binaries/* /bin
+
 
   - uses: fu1ny2t-3es/gi1-ac2io3s@checkout-branch
     with:
@@ -32,56 +39,20 @@ runs:
       auto: true
 
 
-  - if: inputs.arch == 'x86' || inputs.arch == 'x64'
-    uses: fu1ny2t-3es/gi1-ac2io3s@mingw-install
-    with:
-      arch: ${{ inputs.arch }}
-
-
-  - uses: fu1ny2t-3es/cc1ch2-ac3io4@custom
-    with:
-      key: ${{ inputs.arch }}
-
-
   - shell: bash
     run: |
-      merge () {
-        echo "<<< ===  merging  $1  === >>>";
-        if [[ -z "$2" ]]; then
-          git merge origin/$1 || { git diff --diff-filter=U; exit 1; }
-        else
-          git merge origin/$1 || { git diff --diff-filter=U; git merge --abort; git merge -X $2 origin/$1; }
-        fi
-        echo "";
-      }
+      sudo make ages
+      7za a ages.7z build_ages_e/*
 
-
-
-  - if: inputs.arch == 'x86' || inputs.arch == 'x64'
-    working-directory: ${{ github.workspace }}
-    env:
-      CC: ccache ${{ env.MINGW_CC }}
-      CXX: ccache ${{ env.MINGW_CXX }}
-    shell: bash
-    run: |
-      make platform="win"
-
-
-
-  - if: inputs.arch == 'so64'
-    working-directory: ${{ github.workspace }}
-    env:
-      CC: ccache gcc
-      CXX: ccache g++
-    shell: bash
-    run: |
-      make platform="unix"
-
+      sudo make seasons
+      7za a seasons.7z build_seasons_e/*
 
 
   - uses: actions/upload-artifact@main
     with:
-      name: program_${{ inputs.arch }}
+      name: oracles_${{ inputs.arch }}
       path: |
-        ${{ github.workspace }}/**.dll
-        ${{ github.workspace }}/**.so
+        ${{ github.workspace }}/*.7z
+        ${{ github.workspace }}/*.gbc
+        ${{ github.workspace }}/build_ages_e/**
+        ${{ github.workspace }}/build_seasons_e/**
