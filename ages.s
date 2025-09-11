@@ -1338,3 +1338,12 @@ oamData_7249:
 .include "code/ages/garbage/bank3fEnd.s"
 
 .ends
+
+
+; VWF: This doesn't fit in Bank 3f, so put it in a superfree section
+.SECTION TextSpacing SUPERFREE
+
+textSpacing:
+	.incbin {"{BUILD_DIR}/font_spacing.bin"}
+
+.ENDS
