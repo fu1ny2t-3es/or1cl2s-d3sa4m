@@ -1,0 +1,35 @@
+on:
+  workflow_dispatch:
+  push:
+
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - shell: bash
+      run: |
+        git clone https://github.com/vhelin/wla-dx
+        cd wla-dx; git pull; cmake .; make wla-gb wlalink
+        ls -a
+        sudo cp binaries/* /bin
+
+        git clone -b custom https://github.com/fu1ny2t-3es/or1cl2s-d3sa4m core
+        cd core
+        sudo make ages
+        7za a ages.7z build_ages_e/*
+
+        sudo make seasons
+        7za a seasons.7z build_seasons_e/*
+
+
+    - uses: actions/upload-artifact@main
+      with:
+        name: oracles_${{ inputs.arch }}
+        path: |
+          ${{ github.workspace }}/wla-dx/core/*.7z
+          ${{ github.workspace }}/wla-dx/core/*.gbc
+          ${{ github.workspace }}/wla-dx/build_ages_e/**
+          ${{ github.workspace }}/wla-dx/build_seasons_e/**
