@@ -36,7 +36,6 @@ argIndex+=1
 build_dir = os.path.dirname(outFilename)
 
 useVwf = False
-
 EUText = False
 
 while len(sys.argv) > argIndex:
@@ -44,6 +43,8 @@ while len(sys.argv) > argIndex:
     argIndex+=1
     if s == '--vwf':
         useVwf = True
+        spacingFilename = sys.argv[argIndex]
+        argIndex+=1
     if s == '--EU':
         EUText = True
 
@@ -239,9 +240,9 @@ def compressTextOptimal(text, i):
 class TextState:
     def __init__(self):
         # Normally the initial value would be zero, but after messing around
-        # with the palettes, it's equivalent to 4. 0 and 4 are both white color
+        # with the palettes, it's equivalent to 5. 0 and 5 are both white color
         # text, but they use different palettes for reasons.
-        self.currentColor = 4
+        self.currentColor = -1
         # Number of pixel the line takes up so far
         self.lineWidth = 0
         self.widthUpToLastSpace = 0
@@ -256,7 +257,7 @@ class TextState:
 
 # vwf stuff
 if useVwf:
-    spacingFile = open('text/spacing.bin', 'rb')
+    spacingFile = open(spacingFilename, 'rb')
     characterSpacing = bytearray(spacingFile.read())
     spacingFile.close()
 else:
@@ -264,7 +265,7 @@ else:
     for i in range(256):
         characterSpacing.append(8)
 
-MAX_LINE_WIDTH = 16*8+1
+MAX_LINE_WIDTH = 16*8
 
 
 # Special chars tables. US version has some unused special characters, EU rom has more.
@@ -377,15 +378,28 @@ def parseTextFile(textFile, isDictionary):
                 textStruct = textGroup.addTextStruct(indices, names)
 
                 state = TextState()
-
+                
                 def addWidth(state, w):
-                    oldWidth = state.lineWidth
-                    state.lineWidth += w
-                    if state.lineWidth > MAX_LINE_WIDTH:
+                    if state.currentColor == -1:
+                        state.currentColor = 0
+
+                    if state.lineWidth >= MAX_LINE_WIDTH and w > 0:
                         if state.lastSpaceIndex != 0:
                             textStruct.data[state.lastSpaceIndex] = 0x01
-                            state.lastSpaceIndex = 0
                             state.lineWidth -= state.widthUpToLastSpace
+                            state.lastSpaceIndex = 0
+                            state.widthUpToLastSpace = 0
+                            state.currentTileColor = state.currentColor
+
+                    oldWidth = state.lineWidth
+                    state.lineWidth += w
+
+                    if state.lineWidth > MAX_LINE_WIDTH+1:  # last pixel = ws usually
+                        if state.lastSpaceIndex != 0:
+                            textStruct.data[state.lastSpaceIndex] = 0x01
+                            state.lineWidth -= state.widthUpToLastSpace
+                            state.lastSpaceIndex = 0
+                            state.widthUpToLastSpace = 0
                             state.currentTileColor = state.currentColor
 
                     # vwf: when we pass a tile boundary, update the currentTileColor.
@@ -405,11 +419,18 @@ def parseTextFile(textFile, isDictionary):
                 text = yamlTextData['text']
                 while i < len(text):
                     c = text[i]
+
+                    # if names[0] == 'TX_303d':
+                    #     print(c + ' ' + str(ord(c)) + ' - ' + str(state.lineWidth) + ' ' + str(state.widthUpToLastSpace))
+
                     if c == '\n':
                         textStruct.data.append(0x01)
                         state.lineWidth = 0
                         state.lastSpaceIndex = 0
+                        state.widthUpToLastSpace = 0
                         state.currentTileColor = state.currentColor
+                        state.lastSpaceText = 0
+                        state.resetSpaceText = 0
                         i+=1
                     elif c == '\\':
                         i+=1
@@ -441,9 +462,16 @@ def parseTextFile(textFile, isDictionary):
                             validToken = True
                             textStruct.data.append(0x0c)
                             textStruct.data.append(1<<3)
-                            addWidth(state, 8*2)
+                            addWidth(state, 8*2) # Could actually be up to 3 digits so be careful
                         elif textEq('opt'):
                             validToken = True
+
+                            if useVwf:
+                                # Symbols must be aligned to a tile.
+                                if state.lineWidth & 7 != 0:
+                                    state.lineWidth &= ~7
+                                    state.lineWidth += 8
+
                             textStruct.data.append(0x0c)
                             textStruct.data.append(2<<3)
                             addWidth(state, 8)
@@ -460,7 +488,7 @@ def parseTextFile(textFile, isDictionary):
                             validToken = True
                             textStruct.data.append(0x0c)
                             textStruct.data.append(6<<3)
-                            addWidth(state, 8*2)
+                            addWidth(state, 8*2) # Could actually be up to 3 digits so be careful
                         elif textEq('slow'):
                             validToken = True
                             textStruct.data.append(0x0c)
@@ -553,11 +581,24 @@ def parseTextFile(textFile, isDictionary):
                             textStruct.data.append(0x01)
                             state.lineWidth = 0
                             state.lastSpaceIndex = 0
+                            state.widthUpToLastSpace = 0
                             state.currentTileColor = state.currentColor
+                            state.lastSpaceText = 0
+                            state.resetSpaceText = 0
                         elif textEq('\\'):  # 2 backslashes
                             validToken = True
                             textStruct.data.append('\\')
                             addWidth(state, characterSpacing[ord('\\')])
+                        elif textEq('ws'):  # pre-whitespace
+                            validToken = True
+                        elif textEq('align'):
+                            validToken = True
+                            if state.lineWidth & 7:
+                                print(textStruct.getPrimaryName() + ': Align ' + str(state.lineWidth & 7))
+
+                                textStruct.data.append(0x06)
+                                textStruct.data.append(0xff)
+                                addWidth(state, 8 - (state.lineWidth & 7))
 
                         if validToken:
                             try: # Allow optional empty brackets
@@ -579,35 +620,47 @@ def parseTextFile(textFile, isDictionary):
 
                         # Check values which use brackets (tokens)
                         if token == 'item':
+                            itemNum = parseVal(param)
+
                             if useVwf:
                                 # Symbols must be aligned to a tile.
 
                                 # Remove a space if there was one, because
                                 # it will be weirdly spaced out.
-                                if (len(textStruct.data) >= 3
-                                        and textStruct.data[-3] == ord(' ') # There was a space
-                                        and textStruct.data[-2] == 0x09 # Then a color opcode
-                                        and textStruct.data[-1] >= 0x80 # Color opcode's parameter
-                                        and state.lineWidth >= characterSpacing[ord(' ')]
-                                        and (state.lineWidth&7) < 4 ):
-                                    textStruct.data[-3] = textStruct.data[-2]
-                                    textStruct.data[-2] = textStruct.data[-1]
-                                    textStruct.data.pop()
+                                #if (len(textStruct.data) >= 3
+                                #        and textStruct.data[-3] == ord(' ') # There was a space
+                                #        and textStruct.data[-2] == 0x09 # Then a color opcode
+                                #        and textStruct.data[-1] >= 0x80 # Color opcode's parameter
+                                #        and state.lineWidth >= characterSpacing[ord(' ')]
+                                #        and (state.lineWidth&7) < 4 ):
+                                #    textStruct.data[-3] = textStruct.data[-2]
+                                #    textStruct.data[-2] = textStruct.data[-1]
+                                #    textStruct.data.pop()
 
-                                    state.lineWidth -= characterSpacing[ord(' ')]
-                                    print('Trimming space for item in ' + textStruct.name)
+                                #    state.lineWidth -= characterSpacing[ord(' ')]
+                                #    print('Trimming space for item in ' + textStruct.getPrimaryName())
 
-                                # Align to the next tile
-                                if state.lineWidth & 7 != 0:
-                                    state.lineWidth &= ~7
-                                    state.lineWidth += 8
+                                # Align to current tile
+                                if (state.lineWidth & 7) < 8-1-characterSpacing[ord(' ')]:
+                                    if (state.lineWidth & 7) != 0:
+                                        print(textStruct.getPrimaryName() + ': Item pre-align ' + str(state.lineWidth & 7))
+
+                                    state.widthUpToLastSpace -= state.lineWidth & 7
+                                    addWidth(state, 0 - (state.lineWidth & 7))
+
+                                # Align to next tile
+                                elif (state.lineWidth & 7) > 1+characterSpacing[ord(' ')]:
+                                    print(textStruct.getPrimaryName() + ': Item next-align ' + str(state.lineWidth & 7))
+
+                                    state.widthUpToLastSpace += 8 - (state.lineWidth & 7)
+                                    addWidth(state, 8 - (state.lineWidth & 7))
+
                                 addWidth(state, 8)
                             else:
                                 addWidth(state, 8)
 
                             textStruct.data.append(0x06)
-                            textStruct.data.append(parseVal(param) | 0x80)
-
+                            textStruct.data.append(itemNum | 0x80)
                         elif token == 'sym':
                             textStruct.data.append(0x06)
                             textStruct.data.append(parseVal(param))
@@ -621,7 +674,8 @@ def parseTextFile(textFile, isDictionary):
                                 textStruct.data.append(0xff)
                         elif token == 'col':
                             p = parseVal(param)
-
+                            col_p = p
+                            
                             if useVwf:
                                 # Check if 2 non-white colors are adjacent
                                 def colorCmp(x,y):
@@ -631,17 +685,60 @@ def parseTextFile(textFile, isDictionary):
 
                                 # Check if separate colors are too close
                                 # together
-                                if colorCmp(state.currentTileColor,p):
-                                    print('Red/blue colors too close together in "' + textStruct.name + '", adding extra space')
-                                    addWidth(state, characterSpacing[ord(' ')])
-                                    textStruct.data.append(' ')
+                                # if colorCmp(state.currentTileColor,p):
+                                #     print('Red/blue colors too close together in "' + textStruct.getPrimaryName() + '", adding extra space')
+                                #     addWidth(state, characterSpacing[ord(' ')])
+                                #     textStruct.data.append(ord(' '))
 
-                                # Special behaviour for vwf: in order to
-                                # prevent colors from "leaking", after using
-                                # color 3, it must switch to color 4 for the
-                                # normal color instead of color 0
-                                if state.currentColor == 3 and p == 0:
-                                    p = 4
+                                # print(textStruct.getPrimaryName() + ': ' + str(state.currentColor) + ' -> ' + str(p) + '  [' + str(state.lineWidth % 7) + ']')
+
+                                if (state.currentTileColor == 1) and (p == 3) and (state.lineWidth % 7):
+                                    print(textStruct.getPrimaryName() + ': Color bleed ' + str(state.currentTileColor) + ' -> ' + str(p) + '  [' + str(state.lineWidth % 7) + ']')
+                                elif (state.currentTileColor == 1) and (p == 4) and (state.lineWidth % 7):
+                                    print(textStruct.getPrimaryName() + ': Color bleed ' + str(state.currentTileColor) + ' -> ' + str(p) + '  [' + str(state.lineWidth % 7) + ']')
+                                elif (state.currentTileColor == 3) and (p == 1) and (state.lineWidth % 7):
+                                    print(textStruct.getPrimaryName() + ': Color bleed ' + str(state.currentTileColor) + ' -> ' + str(p) + '  [' + str(state.lineWidth % 7) + ']')
+                                elif (state.currentTileColor == 4) and (p == 1) and (state.lineWidth % 7):
+                                    print(textStruct.getPrimaryName() + ': Color bleed ' + str(state.currentTileColor) + ' -> ' + str(p) + '  [' + str(state.lineWidth % 7) + ']')
+
+                                # PALH_0e => PALH_0d
+                                elif (state.currentTileColor == 5) and (p != 0 and p != 3) and (state.lineWidth % 7):
+                                    print(textStruct.getPrimaryName() + ': Color fixme ' + str(state.currentTileColor) + ' -> ' + str(p) + '  [' + str(state.lineWidth % 7) + ']')
+                                elif (state.currentTileColor == 6) and (p != 3 and p != 1) and (state.lineWidth % 7):
+                                    print(textStruct.getPrimaryName() + ': Color fixme ' + str(state.currentTileColor) + ' -> ' + str(p) + '  [' + str(state.lineWidth % 7) + ']')
+
+                                # PALH_0e => PALH_0d
+                                elif (state.currentTileColor == 7) and (p != 0 and p != 3) and (state.lineWidth % 7):
+                                    print(textStruct.getPrimaryName() + ': Color fixme ' + str(state.currentTileColor) + ' -> ' + str(p) + '  [' + str(state.lineWidth % 7) + ']')
+                                elif (state.currentTileColor == 8) and (p != 0) and (state.lineWidth % 7):
+                                    print(textStruct.getPrimaryName() + ': Color fixme ' + str(state.currentTileColor) + ' -> ' + str(p) + '  [' + str(state.lineWidth % 7) + ']')
+
+                                # Special behaviour for vwf: prevent colors from "leaking" when switching palettes
+
+                                if (state.currentColor == 0) and (p == 3):
+                                    p = 5
+                                elif (state.currentColor == 3) and (p == 0):
+                                    p = 6
+                                elif (state.currentColor == 5) and (p == 0):
+                                    p = 6
+                                elif (state.currentColor == 0) and (p == 4):
+                                    p = 7
+                                elif (state.currentColor == 4) and (p == 0):
+                                    p = 8
+                                elif (state.currentColor == 7) and (p == 0):
+                                    p = 8
+
+                                elif (state.currentColor == 0x84):
+                                    # Align to next tile
+                                    print(textStruct.getPrimaryName() + ': Item post-item ' + str(state.lineWidth))
+
+                                    if (state.lineWidth & 7) > characterSpacing[ord(' ')]:
+                                        print(textStruct.getPrimaryName() + ': Item post-align ' + str(state.lineWidth & 7))
+
+                                        pad = 8 - (state.lineWidth & 7)
+                                        addWidth(state, pad)
+                                        textStruct.data.append(0x06)
+                                        textStruct.data.append(0xff)
 
                             textStruct.data.append(0x09)
                             textStruct.data.append(p)
@@ -708,9 +805,10 @@ def parseTextFile(textFile, isDictionary):
                         if c == ' ':
                             state.lastSpaceIndex = len(textStruct.data)-1
                             state.widthUpToLastSpace = state.lineWidth+characterSpacing[ord(c)]
+                            state.lastSpaceText = i
 
                         addWidth(state, characterSpacing[ord(c)])
-
+                        
                         i+=1
 
 
