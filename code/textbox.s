@@ -399,8 +399,21 @@ textOptionCode:
 	ld hl,@cursorDelay
 	rst_addAToHl
 	ld a,(hl)
-	ld e,<w7CharacterDisplayTimer
+	ld de,w7CharacterDisplayTimer
 	ld (de),a
+
+	; 8x16 cursor
+	ld a,$60
+	call getAddressInTextboxMap
+
+	ld a,$02
+	ld (hl),a
+
+	ld a,l
+	add $20
+	ld l,a
+	ld (hl),$02
+
 	ret
 
 ; These are values determining how many frames until the cursor appears.
@@ -410,14 +423,25 @@ textOptionCode:
 
 ;;
 @state01:
-	ld h,d
-	ld l,<w7CharacterDisplayTimer
+	;ld h,d
+	;ld l,<w7CharacterDisplayTimer
+	ld hl,w7CharacterDisplayTimer
 	dec (hl)
 	ret nz
 
 	; hl = w7TextDisplayState (go to state $02)
 	ld l,e
 	inc (hl)
+
+	; 8x16 cursor
+	ld a,$bf
+	ld bc,w7TextGfxBuffer
+	call retrieveTextCharacter
+
+	ld hl,w7TextGfxBuffer
+	ld de,$9600
+	ld bc,$0107
+	call queueDmaTransfer
 
 	jp updateSelectedTextPositionAndDmaTextboxMap
 
@@ -552,14 +576,15 @@ inventoryTextCode:
 	ld a,h
 	ld (de),a
 
-	ld e,<w7InvTextSpacesAfterName
-	ld a,(de)
-	or a
-	jr z,++
+	; VWF: Don't do this(?)
+	;ld e,<w7InvTextSpacesAfterName
+	;ld a,(de)
+	;or a
+	;jr z,++
 
-	inc a
-	srl a
-	ld (de),a
+	;inc a
+	;srl a
+	;ld (de),a
 +
 	ld e,<w7InvTextSpacesAfterName
 	ld a,(de)
@@ -577,8 +602,15 @@ inventoryTextCode:
 @@end:
 	; Load the graphics from w7TextGfxBuffer
 	ld a,UNCMP_GFXH_17
-	jp loadUncompressedGfxHeader
+	;jp loadUncompressedGfxHeader
+	call loadUncompressedGfxHeader
 
+	; VWF: Extra initialization
+	xor a
+	ld (w7TextCharOffset),a
+	ld (w7InvTextUnfinishedCharacter),a
+	ret
+	
 ;;
 ; Text is paused on the name of the item being viewed
 @state01:
@@ -604,6 +636,15 @@ inventoryTextCode:
 
 	; This will return the current text address
 	call shiftTextGfxBufferLeft
+
+	; VWF: ?
+	xor a
+	ld (w7InvTextHaltOnNewline),a
+	call inventoryTextDrawHook
+
+	ld d,$d0
+	ret nz
+	/*
 --
 	call readByteFromW7ActiveBankAndIncHl
 
@@ -622,6 +663,7 @@ inventoryTextCode:
 	ld a,(w7TextStatus)
 	or a
 	jr nz,--
+	*/
 
 	; End of text has been reached.
 
@@ -644,10 +686,13 @@ inventoryTextCode:
 	ld (hl),b
 
 @drawSpaceWithoutSavingTextAddress:
-	ld a,$20
-	ld bc,w7TextGfxBuffer+$1e0
-	call retrieveTextCharacter
-	jr @dmaTextGfxBuffer
+	; VWF: return(?)
+	ret
+
+	;ld a,$20
+	;ld bc,w7TextGfxBuffer+$1e0
+	;call retrieveTextCharacter
+	;jr @dmaTextGfxBuffer
 
 ;;
 ; Text is scrolling but all of it has been displayed
@@ -663,6 +708,10 @@ inventoryTextCode:
 	; hl = w7TextDisplayState (go to state $04)
 	ld l,e
 	inc (hl)
+	
+	; VWF: ?
+	xor a
+	ld (w7TextCharOffset),a
 
 	; Reload the text index?
 	ld l,<w7TextIndexL_backup
@@ -703,6 +752,18 @@ inventoryTextCode:
 	ret nz
 
 	call shiftTextGfxBufferLeft
+
+	; VWF: ?
+	ld a,1
+	ld (w7InvTextHaltOnNewline),a
+	call inventoryTextDrawHook
+
+	cp $00
+	jr z,@newline
+	cp $02
+	jr z,@newline
+	ret
+/*
 ---
 	call readByteFromW7ActiveBankAndIncHl
 	cp $10
@@ -711,35 +772,33 @@ inventoryTextCode:
 	cp $01
 	jr nz,++
 
+*/
+
 	; Newline character
-
-	ld a,l
-	ld b,h
-	ld hl,w7TextAddress
-	ld l,<w7TextAddress
-	ldi (hl),a
-	ld (hl),b
-
-	ld l,<w7InvTextSpacesAfterName
-	ld a,(hl)
-	ld l,<w7InvTextSpaceCounter
-	ld (hl),a
+@newline:
+	ld a,(w7InvTextSpacesAfterName)
+	ld (w7InvTextSpaceCounter),a
 
 	; Go to state $05
-	ld l,<w7TextDisplayState
+	ld hl,w7TextDisplayState
 	inc (hl)
 
 	or a
-	jr nz,@drawSpaceWithoutSavingTextAddress
+	; VWF: ?
+	ret nz
+	;jr nz,@drawSpaceWithoutSavingTextAddress
 
 	; Go to state $06
 	inc (hl)
 	ret
+
+/*
 ++
 	call handleTextControlCodeWithSpecialCase
 	jr z,@saveTextAddressAndDmaTextGfxBuffer
 
 	jr ---
+*/
 
 ;;
 ; The name of the item has been read, now it's scrolling to the middle.
@@ -938,11 +997,13 @@ initTextboxStuff:
 	ret nz
 
 	; If neither TEXTBOXFLAG_ALTPALETTE2 nor TEXTBOXFLAG_ALTPALETTE1 is set, use PALH_0e
+	; Both = orange - blue - green
 	and TEXTBOXFLAG_ALTPALETTE2 | TEXTBOXFLAG_ALTPALETTE1
 	ld a,PALH_0e
 	jr z,+
 
 	; If TEXTBOXFLAG_ALTPALETTE2 is set, use PALH_bd
+	; Seasons (Autumn) = green - blue - orange
 	ld a,(wTextboxFlags)
 	and TEXTBOXFLAG_ALTPALETTE2
 .ifdef ROM_AGES
@@ -953,9 +1014,11 @@ initTextboxStuff:
 	jr nz,+
 
 	; If TEXTBOXFLAG_ALTPALETTE1 is set, use PALH_0d
+	; Cutscene = red - blue - white
 	ld a,$81
 	ld (w7TextAttribute),a
 	ld a,PALH_0d
+
 +
 	jp loadPaletteHeader
 
@@ -1160,6 +1223,8 @@ checkInitialTextCommands:
 	ld (hl),$00
 	ret
 
+	; VWF: ?
+/*
 ;;
 ; Gets the graphics for a line of text and puts it into w7TextGfxBuffer.
 ; Also sets w7LineTextBuffer, w7LineAttributesBuffer, etc.
@@ -1205,6 +1270,7 @@ drawLineOfText:
 	xor a
 	ld (de),a
 	ret
+*/
 
 ;;
 clearTextGfxBuffer:
@@ -1261,7 +1327,11 @@ setLineTextBuffers:
 	ld e,a
 	ld a,(hl)
 	ld (de),a
-	ld (hl),$00
+
+	; VWF: Normally this is cleared, but in the vwf hack, this function could be called multiple
+	; times on the same index, resulting in a sound effect getting overwritten by this line. So,
+	; clear w7SoundEffect elsewhere.
+	;ld (hl),$00
 
 	pop hl
 	pop de
@@ -2166,8 +2236,11 @@ doInventoryTextFirstPass:
 	push bc
 	sub $11
 	cpl
-	ld l,<w7InvTextSpacesAfterName
-	ld (hl),a
+
+	; VWF: ?
+	call inventoryTextSpaceCalculationHook
+	;ld l,<w7InvTextSpacesAfterName
+	;ld (hl),a
 
 	; Calculate where in w7TextGfxBuffer to put the first character
 	and $0e
@@ -2188,8 +2261,11 @@ doInventoryTextFirstPass:
 	jr c,+
 
 	; Standard character
-	call setLineTextBuffers
-	call retrieveTextCharacter
+	;call setLineTextBuffers
+	;call retrieveTextCharacter
+
+	; VWF: ?
+	call vwfAddCharToTextBuffer
 
 	; Stop at 16 characters
 	bit 4,e
@@ -2353,11 +2429,16 @@ handleTextControlCodeWithSpecialCase:
 	xor a
 	ret
 
+/*
 ;;
 ; Updates w7SelectedTextPosition based on w7SelectedTextOption, and draws the
 ; cursor to that position in w7TextboxMap.
 updateSelectedTextPosition:
 	call getSelectedTextOptionAddress
+	ld a,(hl)
+	and $60
+	ld b,a
+
 	bit 5,(hl)
 	ld b,$60
 	jr nz,+
@@ -2371,29 +2452,46 @@ updateSelectedTextPosition:
 
 	call getAddressInTextboxMap
 	ld (hl),$04
+
 	ret
+*/
 
 ;;
 ; @param[out] hl The address in w7TextboxOptionPositions for the current
 ; selected option.
 getSelectedTextOptionAddress:
+/*
 	ld e,<w7SelectedTextOption
 	ld a,(de)
 	add <w7TextboxOptionPositions
 	ld l,a
 	ld h,d
 	ret
+*/
+	ld a,(w7SelectedTextOption)
+	add <w7TextboxOptionPositions
+	ld l,a
+	ld h,>w7TextboxOptionPositions
+	ret
+
 
 ;;
 ; @param a Value from w7TextboxOptionPositions
 ; @param b Offset to start of row ($20 for top row, $60 for bottom)
 ; @param[out] hl Pointer to somewhere in w7TextboxMap
 getAddressInTextboxMap:
+	ld l,a
+	and $20
+	add a
+	ld b,a
+	ld a,l
+
 	and $1e
 	rrca
 	ld l,a
-	ld e,<w7d0cc
-	ld a,(de)
+	;ld e,<w7d0cc
+	;ld a,(de)
+	ld a,(w7d0cc)
 
 	; Text starts 2 tiles from the leftmost edge
 	add $02
@@ -2407,6 +2505,7 @@ getAddressInTextboxMap:
 
 ;;
 removeCursorFromSelectedTextPosition:
+/*
 	ld b,$60
 	ld e,<w7SelectedTextPosition
 	ld a,(de)
@@ -2417,6 +2516,19 @@ removeCursorFromSelectedTextPosition:
 +
 	call getAddressInTextboxMap
 	ld (hl),c
+	ret
+*/
+	call getSelectedTextOptionAddress
+
+	; 8x16 cursor
+	ld a,(hl)
+	call getAddressInTextboxMap
+	ld (hl),$02
+
+	ld a,l
+	add $20
+	ld l,a
+	ld (hl),$02
 	ret
 
 ;;
@@ -2517,7 +2629,19 @@ textOptionCode_checkDirectionButtons:
 
 ;;
 updateSelectedTextPositionAndDmaTextboxMap:
-	call updateSelectedTextPosition
+	;call updateSelectedTextPosition
+	call getSelectedTextOptionAddress
+
+	; 8x16 cursor
+	ld a,(hl)
+	call getAddressInTextboxMap
+	ld (hl),$60
+
+	ld a,l
+	add $20
+	ld l,a
+	ld (hl),$61
+
 	jp dmaTextboxMap
 
 ;;
@@ -2527,6 +2651,8 @@ updateSelectedTextPositionAndDmaTextboxMap:
 textOptionCode_checkBButton:
 	and BTN_B
 	ret z
+
+	call removeCursorFromSelectedTextPosition
 
 	; Find last option
 	ld h,d
@@ -2543,7 +2669,7 @@ textOptionCode_checkBButton:
 
 	ld a,SND_MENU_MOVE
 	call playSound
-	call removeCursorFromSelectedTextPosition
+
 	call updateSelectedTextPositionAndDmaTextboxMap
 	or d
 	ret
@@ -2710,6 +2836,23 @@ handleTextControlCode:
 	jr c,@kanji
 
 @tradeItem:
+	; VWF: align only
+	cp a,$ff
+	jr nz,+
+
+	ld a,(w7TextCharOffset)
+	or a
+	jp z,@popBcAndRet
+
+	push hl
+	xor a
+	ld (w7TextCharOffset),a
+	ld hl,w7TextBufPosition
+	inc (hl)
+	pop hl
+	jp @popBcAndRet
+
++	
 	ld a,(wTextGfxColorIndex)
 	swap a
 	or $03
@@ -2727,11 +2870,17 @@ handleTextControlCode:
 	ld a,b
 ++
 	pop bc
+
+/*
 	push af
 	ld a,$06
 	call setLineTextBuffers
 	pop af
 	jp retrieveTextCharacter
+*/
+
+	; VWF symbol drawing code
+	jp vwfAddSymbolToTextBuffer
 
 ;;
 ; Dictionary 0
@@ -2764,7 +2913,7 @@ handleTextControlCode:
 	ldh a,(<hFF8B)
 	ld (wTextIndexH),a
 	call getTextAddress
-	jr @popBcAndRet
+	jp @popBcAndRet
 
 ;;
 ; "Call" another piece of text; insert that text, then go back to reading the
@@ -2832,6 +2981,32 @@ handleTextControlCode:
 	bit 7,a
 	jr nz,+
 
+	; VWF: new palette loading
+	cp a,$05
+	jr c,++
+
+	push af
+	push hl
+
+@@palette1:
+	cp a,$07
+	jr nc,@@palette2
+	ld a,PALH_0d
+	jr @@loadpalette
+
+@@palette2:
+.ifdef ROM_AGES
+	ld a,PALH_cb_vwf
+.else
+	ld a,PALH_SEASONS_be_vwf1
+.endif
+
+@@loadpalette:
+	call loadPaletteHeader
+	pop hl
+	pop af
+
+++
 	ld bc,@textColorData
 	call addDoubleIndexToBc
 	ld a,(bc)
@@ -2857,8 +3032,13 @@ handleTextControlCode:
 @textColorData:
 	.db $80 $02 ; White (palette 0)
 	.db $80 $01 ; Red (palette 0)
-	.db $81 $00 ; Red (palette 1, color 0, appears behind sprites)
+	.db $81 $00 ; Orange (palette 1, color 0, appears behind sprites)
 	.db $81 $01 ; Blue (palette 1)
+	.db $81 $02 ; Green (palette 1)
+	; vwf
+	.db $81 $01 ; Blue (palette 1)
+	.db $81 $02 ; White (palette 1)
+	.db $81 $01 ; Green (palette 1)
 	.db $81 $02 ; White (palette 1)
 
 
@@ -2879,8 +3059,11 @@ handleTextControlCode:
 	or a
 	jr z,+
 
-	call setLineTextBuffers
-	call retrieveTextCharacter
+	; VWF
+	call vwfAddCharToTextBuffer
+
+	;call setLineTextBuffers
+	;call retrieveTextCharacter
 	jr --
 +
 	pop hl
@@ -3066,35 +3249,61 @@ textControlCodeC_1:
 
 @drawDigit:
 	add $30
-	call setLineTextBuffers
-	jp retrieveTextCharacter
+	;call setLineTextBuffers
+	;jp retrieveTextCharacter
+	; VWF: ?
+	jp vwfAddCharToTextBuffer
 
 ;;
 ; An option is presented, ie. yes/no. This command marks a possible position
 ; for the cursor.
 textControlCodeC_2:
+	; If w7TextCharOffset is zero, don't need to align
+	ld a,(w7TextCharOffset)
+	or a
+	jr z,+
+
+	; Align to the nearest tile
+	xor a
+	ld (w7TextCharOffset),a
+	ld hl,w7TextBufPosition
+	inc (hl)
+
++
 	call @getNextTextboxOptionPosition
 	ld a,(w7d0c1)
 	or $04
 	ld (w7d0c1),a
 
 	; e is the position in the line
-	ld a,e
+	;ld a,e
+
+	; VWF: find the position for the cursor
+	call textOptionPositionHook
+	
 	; Multiply by 2 since each character is 2 bytes
 	add a
 	; w7TextboxMap+$60 is the start of the bottom row
 	or $60
 
-	ld b,a
-	inc b
-	ld (hl),b
+	;ld b,a
+	;inc b
+	;ld (hl),b
+
+	; VWF: ?
+	inc a
+	ld (hl),a
+
 	pop hl
 	pop bc
 
 	; Reserve this spot for the cursor
 	ld a,$20
 	call setLineTextBuffers
-	jp retrieveTextCharacter
+	;jp retrieveTextCharacter
+
+	; VWF: Don't call retrieveTextCharacter here
+	ret
 
 ;;
 @getNextTextboxOptionPosition:
@@ -3241,3 +3450,604 @@ extraTextIndices:
 	.dw $cbad
 	.db <TX_0d0c, <TX_0d08, <TX_0d07, <TX_0d03
 .endif
+
+
+; ================================================================================
+;
+; VWF code here
+
+;;
+; This hook must calculate a value for w7InvTextSpaceCounter and write it there.
+; It also calculates w7TextBufPosition (where the vwf should start when
+; initially drawing the name of the item)
+inventoryTextSpaceCalculationHook:
+	ld b,a
+	xor a
+	ld (w7TextCharOffset),a
+
+	; Get and save initial text address
+	ld hl,w7ActiveBank
+	ldi a,(hl)
+	push af
+	ldi a,(hl)
+	ld h,(hl)
+	ld l,a
+	push hl
+
+	; bc: number of pixels the character takes up
+	ld bc,$0000
+--
+	call readByteFromW7ActiveBankAndIncHl
+
+	; Finished on newline
+	cp $01
+	jr z,@done
+
+	cp $10
+	jr nc,+
+
+	call handleTextControlCode
+
+	; Finished on newline or null character
+	ld a,(w7TextStatus)
+	cp $02
+	jr c,@done
+
+	jr --
++
+
+	call getCharacterSpacing
+	call addAToBc
+	jr --
+
+@done:
+	ld a,$06
+	call addAToBc
+	push bc
+
+	call @divBcBy16
+
+	ld b,a
+	ld a,$08
+	sub b
+	ld (w7TextBufPosition),a
+	ld e,a
+
+	; a now holds # of tiles *before* the character, but we also need to
+	; calculate number of tiles *after*, for when it scrolls back.
+	pop bc
+	ld a,$02
+	call addAToBc
+	call @divBcBy8
+	ld b,a
+	ld a,$11
+	sub b
+	sub e
+
+	ld hl,w7InvTextSpacesAfterName		; $54e3
+	ld (hl),a		; $54e5
+
+	pop hl
+	pop af
+	ld (w7ActiveBank),a
+
+	; Clear the text stack due to my abuse of _handleTextControlCode
+	ld b,$20
+	ld hl,w7TextStack
+	call clearMemory
+
+	ret
+
+@divBcBy16:
+	ld a,c
+	srl b
+	rr a
+	jr +
+
+@divBcBy8:
+	ld a,c
++
+.rept 3
+	srl b
+	rr a
+.endr
+	ret
+
+;;
+; This hook's responsibilities are to:
+;  - Perform the reading and drawing of one tile's worth of text.
+;  - Set the zero flag on return if the text is done.
+inventoryTextDrawHook:
+	; Clear it
+	push hl
+	ld b,$20
+	ld hl,w7TextGfxBuffer+$1e0
+	ld a,$ff
+	call fillMemory
+	pop hl
+
+	ld a,(w7InvTextUnfinishedCharacter)
+	or a
+	call nz,@drawUnfinishedCharacter
+
+--
+	call readByteFromW7ActiveBankAndIncHl		; $4db2
+
+	cp $10			; $4db5
+	jr nc,@drawCharacter	; $4db7
+
+	; Newline
+	cp $01			; $4db9
+	jr nz,+			; $4dbb
+
+	ld a,(w7InvTextHaltOnNewline)
+	or a
+	jr z,@drawSpace
+
+	ld a,$02
+	push hl
+	jr @end
++
+
+	call handleTextControlCodeWithSpecialCase		; $4dbd
+	; Jump if it was command $06 (a special symbol)
+; 	jr z,@saveTextAddressAndDmaTextGfxBuffer	; $4dc0
+
+	; Keep looping until an actual character is read, or the end of the
+	; text is reached.
+	ld a,(w7TextStatus)		; $4dc2
+	or a			; $4dc5
+	jr nz,--		; $4dc6
+
+	xor a
+	push hl
+	jr @end
+
+@drawSpace:
+	ld a,$20
+@drawCharacter:
+	push hl
+
+	; Get character graphic in w7TmpBuf
+	ld (w7TextCharIndex),a
+	ld bc,w7TmpBuf
+	call retrieveTextCharacter
+
+	; Draw the character
+	ld a,(w7TextCharOffset)
+	ld de,w7TmpBuf
+	ld hl,w7TextGfxBuffer+$1e0
+	call addShiftedCharacter
+
+	; Recalculate w7TextCharOffset
+	ld a,(w7TextCharIndex)
+	call getCharacterSpacing
+	ld b,a
+
+	ld de,w7TextCharOffset
+	ld a,(de)
+	add b
+	cp 8
+	jr z,@eight
+	jr c,@nextCharacter
+
+@overflow:
+	sub 8
+	ld (de),a
+	ld a,(w7TextCharIndex)
+	ld (w7InvTextUnfinishedCharacter),a
+	ld a,1
+	jr @end
+
+@nextCharacter:
+	ld (de),a
+	pop hl
+	jr --
+
+@eight:
+	xor a
+	ld (de),a
+	ld a,1
+
+@end:
+	pop hl
+	push af
+	ld a,l			; $4e08
+	ld (w7TextAddress),a		; $4e09
+	ld a,h			; $4e0c
+	ld (w7TextAddress+1),a		; $4e0d
+
+	; Copy w7TextGfxBuffer to vram
+	ld a,UNCMP_GFXH_17		; $4e10
+	call loadUncompressedGfxHeader		; $4e12
+
+	pop af
+	or a
+	ret
+
+@drawUnfinishedCharacter:
+	push hl
+
+	; Get graphics
+	push af
+	ld bc,w7TmpBuf
+	call retrieveTextCharacter
+
+	; Calculate how much of this character to skip
+	ld a,(w7TextCharOffset)
+	ld b,a
+	pop af
+	call getCharacterSpacing
+	sub b
+
+	; Draw it shifted
+	ld de,w7TmpBuf
+	ld hl,w7TextGfxBuffer+$1e0
+	call drawShiftedCharacter
+
+	xor a
+	ld (w7InvTextUnfinishedCharacter),a
+
+	pop hl
+	ret
+
+
+;;
+drawLineOfText:
+	; I'm assuming that de is $d400 when this is called?
+
+	xor a
+	ld (w7TextBufPosition),a
+	ld (w7TextCharOffset),a
+
+	; This normally gets cleared in _setLineTextBuffers, but had to be
+	; moved around.
+	ld (w7SoundEffect),a
+
+	ld hl,w7TextGfxBuffer
+	ld bc,$200
+	call clearMemoryBc
+
+	ld h,d			; $5055
+	ld l,<w7TextStatus		; $5056
+	ld (hl),$ff		; $5058
+	ld l,<w7TextAddress		; $505a
+	push hl			; $505c
+	ldi a,(hl)		; $505d
+	ld h,(hl)		; $505e
+	ld l,a			; $505f
+	push hl			; $5060
+	call clearTextGfxBuffer		; $5061
+	call clearLineTextBuffer	; $5064
+	pop hl			; $5067
+	ld bc,w7TextGfxBuffer	; $5068
+@nextByte:
+	call readByteFromW7ActiveBankAndIncHl		; $506b
+	cp $10			; $506e
+	jr nc,+			; $5070
+
+	call handleTextControlCode		; $5072
+
+	; Check whether to stop? ($00 = end of textbox, $01 = newline)
+	ld a,(w7TextStatus)		; $5075
+	cp $02			; $5078
+	jr nc,@nextByte		; $507a
+
+	jp @end			; $507c
++
+	call vwfAddCharToTextBuffer
+	jr @nextByte		; $5084
+@end:
+	; Store w7TextAddress
+	pop de			; $5086
+	ld a,l			; $5087
+	ld (de),a		; $5088
+	inc e			; $5089
+	ld a,h			; $508a
+	ld (de),a		; $508b
+
+	ld e,<w7NextTextColumnToDisplay		; $508c
+	xor a			; $508e
+	ld (de),a		; $508f
+	ret			; $5090
+
+;;
+; Draw a character at the start of a tile.
+;
+; @param	a	Pixels to shift left
+; @param	de	Source
+; @param	hl	Destination
+drawShiftedCharacter:
+	push bc
+	ld b,$20
+	ld c,a
+	or a
+	jp z,copyMemoryReverse
+--
+	ld a,(de)
+	push bc
+-
+	sla a
+	or 1
+	dec c
+	jr nz,-
+
+	ldi (hl),a
+	inc de
+	pop bc
+	dec b
+	jr nz,--
+
+	pop bc
+	ret
+
+;;
+; Draw a character partway into a tile.
+;
+; @param	a	Pixel to start on
+; @param	de	Where to read from
+; @param	hl	Where to write to
+addShiftedCharacter:
+	push bc
+
+	ldh (<hFF8A),a
+
+	ld b,$20
+--
+	ldh a,(<hFF8A)
+	or a
+	ld c,a
+	ld a,(de)
+	jr z,+
+-
+	sra a
+	or $80
+	dec c
+	jr nz,-
++
+	cpl
+	ld c,a
+	ld a,(hl)
+	cpl
+	or c
+	cpl
+	ldi (hl),a
+	inc de
+	dec b
+	jr nz,--
+
+	pop bc
+	ret
+
+;;
+; The following variables must be initialized before using this:
+; w7TextBufPosition (which tile)
+; w7TextCharOffset (offset within tile)
+;
+; @param	a
+vwfAddCharToTextBuffer:
+	push bc
+	push de
+	push hl
+
+	ld (w7TextCharIndex),a
+	push af
+
+	ld a,(w7TextCharIndex)
+	call getCharacterSpacing
+	ldh (<hFF8B),a
+
+	pop af
+	ld bc,w7TmpBuf
+	call retrieveTextCharacter		; $5081
+
+@gotGraphics:
+	ld a,(w7TextBufPosition)
+
+	; Safety for line overflows
+	cp $10
+	jr nc,@end
+
+	ld hl,w7TextGfxBuffer
+	ld d,0
+.rept 5
+	sla a
+	rl d
+.endr
+	ld e,a
+	add hl,de
+	ld de,w7TmpBuf
+
+	; hl points to where to write to, de points to character gfx
+
+	ld a,(w7TextCharOffset)
+	call addShiftedCharacter
+
+	ld a,(w7TextBufPosition)
+	call addOffsetToLineTextBuffers
+
+	; Draw second part of character if necessary
+	ld a,(w7TextCharOffset)
+	xor 7
+	inc a
+	ld c,a
+
+	ldh a,(<hFF8B)
+
+	cp c
+	jr c,++
+	jr z,++
+
+	ld a,(w7TextBufPosition)
+	inc a
+
+	; Safety for line overflows
+	cp $10
+	jr nc,@end
+
+	call addOffsetToLineTextBuffers
+
+	ld a,c
+	ld de,w7TmpBuf
+	call drawShiftedCharacter
+
+++
+	; Increment position
+	ld a,(w7TextCharOffset)
+	ld c,a
+
+	ldh a,(<hFF8B)
+
+	add c
+	cp $08
+	jr c,+
+
+	sub 8
+	ld hl,w7TextBufPosition
+	inc (hl)
+
+	; Also clear the sound effect when we pass a tile boundary
+	ld hl,w7SoundEffect
+	ld (hl),$00
++
+	ld (w7TextCharOffset),a
+
+@end:
+	pop hl
+	pop de
+	pop bc
+	ret
+
+; @param a
+; @param hl
+; @param[out] de
+@getOffset:
+	push hl
+	ld d,0
+.rept 5
+	sla a
+	rl d
+.endr
+	ld e,a
+
+	add hl,de
+	ld d,h
+	ld e,l
+
+	pop hl
+	ret
+
+; @param a
+addOffsetToLineTextBuffers:
+	push de
+	push hl
+
+	ld de,w7LineTextBuffer
+	call addAToDe
+	ld a,(w7TextCharIndex)
+	call setLineTextBuffers
+
+	pop hl
+	pop de
+	ret
+
+; This is called from _handleTextControlCode@controlCode6. It draws a symbol
+; (either a kanji or a trade item).
+;
+; @param	a		Index of character
+; @param	w7TextGfxSource	The source of the character (kanji or trade item)
+vwfAddSymbolToTextBuffer:
+	push bc
+	push de
+	push hl
+	push af
+
+	; Don't align to a tile if the character isn't a trade item
+	ld a,(w7TextGfxSource)
+	cp 2
+	jr nz,+
+
+	; Align same tile
+	ld a,(w7TextCharOffset)
+	cp a,3
+	jr nc,++
+
+	xor a
+	ld (w7TextCharOffset),a
+
+++
+	; Align next tile
+	cp a,5+1
+	jr c,+
+
+	xor a
+	ld (w7TextCharOffset),a
+	ld hl,w7TextBufPosition
+	inc (hl)
+
++
+	; Width of 8
+	ld a,8
+	ldh (<hFF8B),a
+
+	; Get the character
+	ld bc,w7TmpBuf
+	pop af
+	call retrieveTextCharacter
+
+	jp vwfAddCharToTextBuffer@gotGraphics
+
+; @param a Character index
+getCharacterSpacing:
+	push hl
+	ld hl,textSpacing
+	rst_addAToHl
+	ld a,(w7ActiveBank)
+	push af
+	ld a,:textSpacing
+	ld (w7ActiveBank),a
+	call readByteFromW7ActiveBank
+
+	ld h,a
+	pop af
+	ld (w7ActiveBank),a
+
+	ld a,h
+	pop hl
+	ret
+
+;;
+; This hook must return a position in the line for a cursor in A.
+; This is called when the \opt() command is used in text.txt.
+textOptionPositionHook:
+	push hl
+
+	ld hl,w7TextBufPosition
+	xor a
+	ld (w7TextCharOffset),a
+	ld a,(hl)
+	call addOffsetToLineTextBuffers
+	ld a,(hl)
+	inc (hl)
+
+	pop hl
+	ret
+
+;;
+dmaTextCursor:
+	ld hl,gfx_font_heartpiece
+	ld de,$95d0
+	ldbc $00, :gfx_font_heartpiece
+	call queueDmaTransfer
+
+	ld hl,gfx_font_heartpiece+$10
+	ld e,$f0
+	call queueDmaTransfer
+
+	ld hl,gfx_font_heartpiece+$20
+	ld de,$97c0
+	call queueDmaTransfer
+
+	ld hl,gfx_font_heartpiece+$30
+	ld e,$e0
+	jp queueDmaTransfer
