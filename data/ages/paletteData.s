@@ -4247,3 +4247,8 @@ paletteData5960:
 	m_RGB16 $0a $0a $0a
 	m_RGB16 $00 $00 $00
 
+paletteDataVwf:
+	m_RGB16 $1f $0e $04
+	m_RGB16 $04 $15 $1f
+	m_RGB16 $1f $1a $11
+	m_RGB16 $00 $00 $00

@@ -1074,6 +1074,10 @@ label_02_038:
 
 	; Draw the file number
 	ldh a,(<hActiveFileSlot)
+	add $25
+	ld (w4TileMap+$29),a
+
+	ldh a,(<hActiveFileSlot)
 	add $20
 	ld (w4TileMap+$49),a
 +
@@ -2096,9 +2100,9 @@ fileSelectDrawAcornCursor:
 	.dw @data12
 
 @data11:
-	.db $34 $08
-	.db $4c $08
-	.db $64 $08
+	.db $34-3 $08
+	.db $4c-3 $08
+	.db $64-3 $08
 	.db $e0 $e0
 @data12:
 	.db $7a $22
@@ -2108,9 +2112,9 @@ fileSelectDrawAcornCursor:
 	.dw @data31
 
 @data31:
-	.db $34 $08
-	.db $4c $08
-	.db $64 $08
+	.db $34-3 $08
+	.db $4c-3 $08
+	.db $64-3 $08
 	.db $7a $20
 
 @table4:
@@ -2118,9 +2122,9 @@ fileSelectDrawAcornCursor:
 	.dw @data12
 
 @data41:
-	.db $34 $08
-	.db $4c $08
-	.db $64 $08
+	.db $34-3 $08
+	.db $4c-3 $08
+	.db $64-3 $08
 	.db $7a $22
 
 @table2:
@@ -2128,9 +2132,9 @@ fileSelectDrawAcornCursor:
 	.dw @data12
 
 @data21:
-	.db $34 $50
-	.db $4c $50
-	.db $64 $50
+	.db $34-3 $50
+	.db $4c-3 $50
+	.db $64-3 $50
 	.db $7a $22
 
 @table5:
@@ -2138,18 +2142,18 @@ fileSelectDrawAcornCursor:
 	.dw @data12
 
 @data51:
-	.db $34 $08
-	.db $4c $08
-	.db $64 $08
+	.db $34-3 $08
+	.db $4c-3 $08
+	.db $64-3 $08
 	.db $7a $22
 
 @table6:
 	.dw @data61
 
 @data61:
-	.db $38 $20
-	.db $50 $20
-	.db $68 $20
+	.db $38+1 $20
+	.db $50+1 $20
+	.db $68+1 $20
 
 ;;
 ; This is probably for linking to transfer ring secrets
@@ -10757,7 +10761,7 @@ saveQuitMenu_drawSprites:
 
 @acornSprite:
 	.db $01
-	.db $48 $29 $28 $04
+	.db $48+1 $29 $28 $04
 
 
 ;;
