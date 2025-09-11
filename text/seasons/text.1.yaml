@@ -121,7 +121,8 @@ groups:
 
       Seeds scattered
       across bountiful
-      lands are nourished in this
+      lands are nour-
+      ished in this
       \col(1)Fertile Soil\col(0)!
 
   - name: TX_000f
@@ -348,8 +349,8 @@ groups:
     text: >-
       \pos(2)It's the \col(1)Magical
       Boomerang\col(0)!
-      Press \col(0x84)\item(0x00)
-      \col(0)while holding
+      Press \col(0x84)\item(0x00)\col(0)
+      while holding
       the button to
       control its
       flight path!
@@ -375,8 +376,8 @@ groups:
       \pos(2)You got the
       \col(1)Power Bracelet\col(0)!
       Hold the button
-      and press \col(0x84)\item(0x00)
-      \col(0)to lift heavy
+      and press \col(0x84)\item(0x00)\col(0)
+      to lift heavy
       objects!
 
   - name: TX_0027
@@ -787,32 +788,32 @@ groups:
   - name: TX_005b
     index: 0x5b
     text: >-
-      \pos(2)The \col(0x84)\item(0x01) \col(0)turned
-      into a \col(0x84)\item(0x02) \col(1)Lon Lon
+      \pos(2)The \col(0x84)\item(0x01)\col(0) turned
+      into a \col(0x84)\item(0x02)\col(1) Lon Lon
       Egg\col(0)! It's a
       beauty aid?!?
 
   - name: TX_005c
     index: 0x5c
     text: >-
-      You traded \col(0x84)\item(0x02)
-      \col(0)for a \col(0x84)\item(0x03) \col(1)Ghastly
-      Doll\col(0)! Looking
+      You traded \col(0x84)\item(0x02)\col(0)
+      for a \col(0x84)\item(0x03)\col(1) Ghastly
+      Doll\col(0)!  Looking
       at it gives you
       chills!
 
   - name: TX_005d
     index: 0x5d
     text: >-
-      The \col(0x84)\item(0x03) \col(0)is now an
-      \col(0x84)\item(0x04) \col(1)Iron Pot\col(0).
+      The \col(0x84)\item(0x03)\col(0) is now an
+      \col(0x84)\item(0x04)\col(1) Iron Pot\col(0).
       It looks...
       well-seasoned.
 
   - name: TX_005e
     index: 0x5e
     text: >-
-      Your \col(0x80)\item(0x05) \col(1)Lava Soup\col(0)
+      Your \col(0x80)\item(0x05)\col(1) Lava Soup\col(0)
       is ready! It's
       molten hot!
 
@@ -820,54 +821,54 @@ groups:
     index: 0x5f
     text: >-
       You got the \col(0x84)\item(0x06)
-      \col(1)Goron Vase \col(0)as
+      \col(1)Goron Vase\col(0) as
       thanks for the
-      \col(0x80)\item(0x05)\align\col(0)! It's a very
+      \col(0x80)\item(0x05)\col(0)! It's a very
       nice vase...
 
   - name: TX_0060
     index: 0x60
     text: >-
       You got a \col(0x84)\item(0x07)
-      \col(1)Fish \col(0)as thanks
-      for the \col(0x84)\item(0x06)\align\col(0)! It's
+      \col(1)Fish\col(0) as thanks
+      for the \col(0x84)\item(0x06)\col(0)! It's
       market fresh!
 
   - name: TX_0061
     index: 0x61
     text: >-
-      Your \col(0x84)\item(0x07) \col(0)is now
-      a \col(0x84)\item(0x08) \col(1)Megaphone\col(0)!
+      Your \col(0x84)\item(0x07)\col(0) is now
+      a \col(0x84)\item(0x08)\col(1) Megaphone\col(0)!
       Give a shout!
 
   - name: TX_0062
     index: 0x62
     text: >-
-      \pos(2)Your \col(0x84)\item(0x08) \col(0)is now
-      a \col(0x84)\item(0x09) \col(1)Mushroom\col(0)!
+      \pos(2)Your \col(0x84)\item(0x08)\col(0) is now
+      a \col(0x84)\item(0x09)\col(1) Mushroom\col(0)!
       It smells weird.
 
   - name: TX_0063
     index: 0x63
     text: >-
       You traded the
-      \pos(2)\col(0x84)\item(0x09) \col(0)for a \col(0x84)\item(0x0a)
-      \col(1)Wooden Bird\col(0)!
+      \pos(2)\col(0x84)\item(0x09)\col(0) for a \col(0x84)\item(0x0a)\col(1)
+      Wooden Bird\col(0)!
       It looks real!
 
   - name: TX_0064
     index: 0x64
     text: >-
       You got \col(0x84)\item(0x0b)
-      \col(1)Engine Grease
-      \col(0)\pos(2)for your \col(0x84)\item(0x0a)\align\col(0).
+      \col(1)Engine Grease\col(0)
+      \pos(2)for your \col(0x84)\item(0x0a)\col(0).
 
   - name: TX_0065
     index: 0x65
     text: >-
       You traded your
-      \col(0x84)\item(0x0b) \col(0)for a
-      \col(0x84)\item(0x0c) \col(1)Phonograph\col(0)!
+      \col(0x84)\item(0x0b)\col(0) for a
+      \col(0x84)\item(0x0c)\col(1) Phonograph\col(0)!
       What a tune!
 
   - name: TX_0066
@@ -986,8 +987,7 @@ groups:
       practice. Would
       you like to
       dance with us?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_0101
     index: 0x01
@@ -996,8 +996,7 @@ groups:
       start practice.
       Will you dance
       with us?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_0102
     index: 0x02
@@ -1044,8 +1043,7 @@ groups:
       bump into the
       people near you.
       Got it?
-
-      \ws  \opt()Yes  \opt()Umm...
+        \opt()Yes \opt()Umm...
 
   - name: TX_0109
     index: 0x09
@@ -1134,8 +1132,7 @@ groups:
     text: >-
       Need
       instructions?
-
-      \ws  \opt()No    \opt()Yes
+        \opt()No \opt()Yes
 
 - group: 0x02
   data:
@@ -1150,7 +1147,7 @@ groups:
       Level 1
 
       Gnarled Root
-      Dungeon
+       Dungeon
 
   - name: TX_0202
     index: 0x02
@@ -1165,7 +1162,7 @@ groups:
       Level 3
 
       Poison Moth's
-      Lair
+       Lair
 
   - name: TX_0204
     index: 0x04
@@ -1173,7 +1170,7 @@ groups:
       Level 4
 
       Dancing Dragon
-      Dungeon
+       Dungeon
 
   - name: TX_0205
     index: 0x05
@@ -1221,15 +1218,13 @@ groups:
     index: 0x00
     text: >-
       \call(0xfd)
-
-      \ws    \opt()Warp  \opt()Don't
+        \opt()Warp \opt()Don't
 
   - name: TX_0301
     index: 0x01
     text: >-
-      \ws  \opt()Reselect
-
-      \ws  \opt()Go back
+       \opt()Reselect
+       \opt()Go back
 
   - name: TX_0302
     index: 0x02
@@ -1681,7 +1676,7 @@ groups:
       What a mess!
       Why have you
       left the castle
-      alone?
+      alone?\x20
 
   - name: TX_0509
     index: 0x09
@@ -1854,7 +1849,6 @@ groups:
       bag! The Great
       Witch will be
       mad!
-
       I can't find any
       \col(1)Lon Lon Eggs\col(0),
       and now this...
@@ -2000,7 +1994,7 @@ groups:
   - name: TX_0800
     index: 0x00
     text: >-
-      You've finally
+      \col(4)You've finally
       come. When the
       temple was
       buried, I
@@ -2275,7 +2269,6 @@ groups:
     index: 0x01
     text: >-
       Fertile Soil
-
       Scattered seeds
       are nourished.
 
@@ -2283,7 +2276,6 @@ groups:
     index: 0x02
     text: >-
       Gift of Time
-
       Seeds awaken as
       seasons change.
 
@@ -2291,7 +2283,6 @@ groups:
     index: 0x03
     text: >-
       Bright Sun
-
       Shoots grow
       under warm rays.
 
@@ -2299,7 +2290,6 @@ groups:
     index: 0x04
     text: >-
       Soothing Rain
-
       Shoots mature in
       its drops.
 
@@ -2307,7 +2297,6 @@ groups:
     index: 0x05
     text: >-
       Nurturing Warmth
-
       Balmy days build
       strong saplings.
 
@@ -2315,7 +2304,6 @@ groups:
     index: 0x06
     text: >-
       Blowing Wind
-
       Windblown pollen
       produces fruit.
 
@@ -2323,14 +2311,12 @@ groups:
     index: 0x07
     text: >-
       Seed of Life
-
       New life begins!
 
   - name: TX_0908
     index: 0x08
     text: >-
       Changing Seasons
-
       Scattered seeds
       sprout in
       spring, grow in
@@ -2346,7 +2332,6 @@ groups:
     index: 0x09
     text: >-
       Cuccodex
-
       The complete
       Cucco fact book.
 
@@ -2354,7 +2339,6 @@ groups:
     index: 0x0a
     text: >-
       Lon Lon Egg
-
       A girl's best
       beauty aid.
 
@@ -2362,14 +2346,12 @@ groups:
     index: 0x0b
     text: >-
       Ghastly Doll
-
       A creepy doll.
 
   - name: TX_090c
     index: 0x0c
     text: >-
       Iron Pot
-
       A well-seasoned
       pot.
 
@@ -2377,14 +2359,12 @@ groups:
     index: 0x0d
     text: >-
       Lava Soup
-
       Molten hot soup.
 
   - name: TX_090e
     index: 0x0e
     text: >-
       Goron Vase
-
       A fine vase made
       by a Goron.
 
@@ -2392,14 +2372,12 @@ groups:
     index: 0x0f
     text: >-
       Fish
-
       Market fresh.
 
   - name: TX_0910
     index: 0x10
     text: >-
       Megaphone
-
       Used to shout
       loudly.
 
@@ -2407,7 +2385,6 @@ groups:
     index: 0x11
     text: >-
       Mushroom
-
       Magically
       scented fungus.
 
@@ -2415,7 +2392,6 @@ groups:
     index: 0x12
     text: >-
       Wooden Bird
-
       A realistic
       carving.
 
@@ -2423,7 +2399,6 @@ groups:
     index: 0x13
     text: >-
       Engine Grease
-
       Best lubricant
       around.
 
@@ -2431,14 +2406,12 @@ groups:
     index: 0x14
     text: >-
       Phonograph
-
       What a tune!
 
   - name: TX_0915
     index: 0x15
     text: >-
       Maku Seed
-
       Evil-cleansing
       sacred seed.
 
@@ -2446,7 +2419,6 @@ groups:
     index: 0x16
     text: >-
       Gasha Seed
-
       Plant it in
       soil.
 
@@ -2454,7 +2426,6 @@ groups:
     index: 0x17
     text: >-
       Magic Ring
-
       Take it in for
       appraisal.
 
@@ -2462,28 +2433,24 @@ groups:
     index: 0x18
     text: >-
       Zora's Flippers
-
       Hit the beach.
 
   - name: TX_0919
     index: 0x19
     text: >-
       Magic Potion
-
       Fill your heart!
 
   - name: TX_091a
     index: 0x1a
     text: >-
       Bomb Flower
-
       Use with care!
 
   - name: TX_091b
     index: 0x1b
     text: >-
       Ricky's Gloves
-
       Take them to
       Ricky.
 
@@ -2491,14 +2458,12 @@ groups:
     index: 0x1c
     text: >-
       Member's Card
-
       Opens the door!
 
   - name: TX_091d
     index: 0x1d
     text: >-
       L-1 Ring Box
-
       Holds one
       seed ring.
 
@@ -2506,7 +2471,6 @@ groups:
     index: 0x1e
     text: >-
       L-2 Ring Box
-
       Holds three
       seed rings.
 
@@ -2514,7 +2478,6 @@ groups:
     index: 0x1f
     text: >-
       L-3 Ring Box
-
       Holds five
       seed rings.
 
@@ -2522,21 +2485,18 @@ groups:
     index: 0x20
     text: >-
       Wooden Shield
-
       A small shield.
 
   - name: TX_0921
     index: 0x21
     text: >-
       Iron Shield
-
       A large shield.
 
   - name: TX_0922
     index: 0x22
     text: >-
       Mirror Shield
-
       A reflective
       shield.
 
@@ -2544,21 +2504,18 @@ groups:
     index: 0x23
     text: >-
       Wooden Sword
-
       Mark of a hero.
 
   - name: TX_0924
     index: 0x24
     text: >-
       Noble Sword
-
       A sacred blade.
 
   - name: TX_0925
     index: 0x25
     text: >-
       Master Sword
-
       The blade of
       legends.
 
@@ -2566,14 +2523,12 @@ groups:
     index: 0x26
     text: >-
       Bombs
-
       Very explosive.
 
   - name: TX_0927
     index: 0x27
     text: >-
       Boomerang
-
       Always comes
       back to you.
 
@@ -2581,7 +2536,6 @@ groups:
     index: 0x28
     text: >-
       Biggoron's Sword
-
       A powerful, two-
       handed sword
 
@@ -2589,7 +2543,6 @@ groups:
     index: 0x29
     text: >-
       Bombchu
-
       An advanced
       homing bomb!
 
@@ -2597,14 +2550,12 @@ groups:
     index: 0x2a
     text: >-
       Shovel
-
       A handy tool.
 
   - name: TX_092b
     index: 0x2b
     text: >-
       Power Bracelet
-
       A strength
       booster.
 
@@ -2612,14 +2563,12 @@ groups:
     index: 0x2c
     text: >-
       Roc's Feather
-
       A nice lift.
 
   - name: TX_092d
     index: 0x2d
     text: >-
       Seed Satchel
-
       A bag for
       carrying seeds.
 
@@ -2627,7 +2576,6 @@ groups:
     index: 0x2e
     text: >-
       Strange Flute
-
       A rare
       instrument.
 
@@ -2635,7 +2583,6 @@ groups:
     index: 0x2f
     text: >-
       Ricky's Flute
-
       A flute for
       calling Ricky!
 
@@ -2643,7 +2590,6 @@ groups:
     index: 0x30
     text: >-
       Dimitri's Flute
-
       A flute for
       calling Dimitri!
 
@@ -2651,7 +2597,6 @@ groups:
     index: 0x31
     text: >-
       Moosh's Flute
-
       A flute for
       calling Moosh!
 
@@ -2659,7 +2604,6 @@ groups:
     index: 0x32
     text: >-
       Ember Seeds
-
       Fire burns
       within.
 
@@ -2667,28 +2611,24 @@ groups:
     index: 0x33
     text: >-
       Scent Seeds
-
       Aroma therapy?
 
   - name: TX_0934
     index: 0x34
     text: >-
       Pegasus Seeds
-
       Legendary speed.
 
   - name: TX_0935
     index: 0x35
     text: >-
       Gale Seeds
-
       A windy trip.
 
   - name: TX_0936
     index: 0x36
     text: >-
       Mystery Seeds
-
       A producer of
       unknown effects.
 
@@ -2696,14 +2636,12 @@ groups:
     index: 0x37
     text: >-
       Ember Seeds
-
       A burst of fire!
 
   - name: TX_0938
     index: 0x38
     text: >-
       Scent Seeds
-
       An aromatic
       blast!
 
@@ -2711,21 +2649,18 @@ groups:
     index: 0x39
     text: >-
       Pegasus Seeds
-
       Steals speed?
 
   - name: TX_093a
     index: 0x3a
     text: >-
       Gale Seeds
-
       A mighty blow!
 
   - name: TX_093b
     index: 0x3b
     text: >-
       Mystery Seeds
-
       A producer of
       mystery effects.
 
@@ -2733,7 +2668,6 @@ groups:
     index: 0x3c
     text: >-
       Slingshot
-
       Used to shoot
       seeds.
 
@@ -2741,7 +2675,6 @@ groups:
     index: 0x3d
     text: >-
       Hyper Slingshot
-
       Shoots in three
       directions.
 
@@ -2749,7 +2682,6 @@ groups:
     index: 0x3e
     text: >-
       Roc's Cape
-
       A wind-riding
       cape.
 
@@ -2757,7 +2689,6 @@ groups:
     index: 0x3f
     text: >-
       Traded Ore
-
       Not as useful
       as a feather.
 
@@ -2765,7 +2696,6 @@ groups:
     index: 0x40
     text: >-
       Magic Boomerang
-
       A remote-control
       weapon.
 
@@ -2773,7 +2703,6 @@ groups:
     index: 0x41
     text: >-
       Rod of Seasons
-
       Best used from
       atop a stump.
 
@@ -2781,7 +2710,6 @@ groups:
     index: 0x42
     text: >-
       Magnetic Gloves
-
       Magnetically
       attractive!
 
@@ -2789,7 +2717,6 @@ groups:
     index: 0x43
     text: >-
       Master's Plaque
-
       Proof for the
       master.
 
@@ -2797,7 +2724,6 @@ groups:
     index: 0x44
     text: >-
       Gnarled Key
-
       Key the Maku
       Tree gave you.
 
@@ -2805,7 +2731,6 @@ groups:
     index: 0x45
     text: >-
       Floodgate Key
-
       Opens the
       floodgates.
 
@@ -2813,7 +2738,6 @@ groups:
     index: 0x46
     text: >-
       Dragon Key
-
       A dragon-shaped
       key.
 
@@ -2821,7 +2745,6 @@ groups:
     index: 0x47
     text: >-
       Spring Banana
-
       A fruit with a
       sweet scent.
 
@@ -2829,7 +2752,6 @@ groups:
     index: 0x48
     text: >-
       Rusty Bell
-
       A rusted
       treasure.
 
@@ -2837,7 +2759,6 @@ groups:
     index: 0x49
     text: >-
       Pirate's Bell
-
       Rung to signal
       a departure.
 
@@ -2845,7 +2766,6 @@ groups:
     index: 0x4a
     text: >-
       Treasure Map
-
       Shows treasure
       on your map.
 
@@ -2853,7 +2773,6 @@ groups:
     index: 0x4b
     text: >-
       Jewel
-
       Treasure from a
       bygone age.
 
@@ -2861,7 +2780,6 @@ groups:
     index: 0x4c
     text: >-
       Star-shaped Ore
-
       Ore used when
       bartering.
 
@@ -2869,7 +2787,6 @@ groups:
     index: 0x4d
     text: >-
       Ribbon
-
       A big, beautiful
       red ribbon.
 
@@ -2877,21 +2794,18 @@ groups:
     index: 0x4e
     text: >-
       Red Ore
-
       Valuable metal.
 
   - name: TX_094f
     index: 0x4f
     text: >-
       Blue Ore
-
       Valuable metal.
 
   - name: TX_0950
     index: 0x50
     text: >-
       Hard Ore
-
       Used to forge
       something.
 
@@ -2899,7 +2813,6 @@ groups:
     index: 0x51
     text: >-
       Save Screen
-
       Go to the
       Save Screen.
 
@@ -2907,7 +2820,6 @@ groups:
     index: 0x52
     text: >-
       Pieces of Heart
-
       4 make a
       Heart Container.
 
@@ -2915,7 +2827,6 @@ groups:
     index: 0x53
     text: >-
       Pieces of Heart
-
       3 more make a
       Heart Container.
 
@@ -2923,7 +2834,6 @@ groups:
     index: 0x54
     text: >-
       Pieces of Heart
-
       2 more make a
       Heart Container.
 
@@ -2931,7 +2841,6 @@ groups:
     index: 0x55
     text: >-
       Pieces of Heart
-
       1 more makes a
       Heart Container.
 
@@ -2941,15 +2850,11 @@ groups:
       The season is
       spring.
 
-      \ws 
-
   - name: TX_0957
     index: 0x57
     text: >-
       The season is
       summer.
-
-      \ws 
 
   - name: TX_0958
     index: 0x58
@@ -2957,15 +2862,11 @@ groups:
       The season is
       fall.
 
-      \ws 
-
   - name: TX_0959
     index: 0x59
     text: >-
       The season is
       winter.
-
-      \ws 
 
 - group: 0x0a
   data:
@@ -3220,8 +3121,7 @@ groups:
       That would be a
       big help... May
       I have it?
-
-      \ws  \opt()Sure  \opt()Sorry
+        \opt()Sure \opt()Sorry
 
   - name: TX_0b14
     index: 0x14
@@ -3287,8 +3187,7 @@ groups:
       ghastly it gives
       me chills!
       Let me have it!
-
-      \ws  \opt()OK   \opt()No way
+        \opt()OK \opt()No way
 
   - name: TX_0b1c
     index: 0x1c
@@ -3328,16 +3227,15 @@ groups:
   - name: TX_0b20
     index: 0x20
     text: >-
-      Hey! That \col(0x84)\item(0x04)\align\col(0)!\stop
+      Hey! That \col(0x84)\item(0x04)\col(0)!\stop
 
       It's just what I
-      need! A \col(0x84)\item(0x04) \col(0)like
+      need! A \col(0x84)\item(0x04)\col(0) like
       that would make
       great soup!\stop
 
       Leave it to me!
-
-      \ws  \opt()Sure   \opt()No way
+        \opt()Sure \opt()No way
 
   - name: TX_0b21
     index: 0x21
@@ -3386,9 +3284,8 @@ groups:
     text: >-
       \sfx(0xc7)Oh? Dat sbells
       good! Cad I hab
-      dat soup \col(0x80)\item(0x05)\align\col(0)?
-
-      \ws    \opt()Sure  \opt()No way
+      dat soup \col(0x80)\item(0x05)\col(0)?
+        \opt()Sure \opt()No way
 
   - name: TX_0b28
     index: 0x28
@@ -3431,14 +3328,13 @@ groups:
   - name: TX_0b2c
     index: 0x2c
     text: >-
-      Gasp! Tha- tha...
+      Gasp! Tha-tha...
       That \col(1)vase\col(0)!\stop
 
       Give me that
       \col(1)vase\col(0), please!
       I'm begging you!
-
-      \ws  \opt()Sure   \opt()No way
+        \opt()Sure \opt()No way
 
   - name: TX_0b2d
     index: 0x2d
@@ -3492,8 +3388,7 @@ groups:
       It's Mittens'
       favorite food!
       Is that for her?
-
-      \ws  \opt()Of course  \opt()No
+        \opt()Of course \opt()No
 
   - name: TX_0b33
     index: 0x33
@@ -3551,9 +3446,8 @@ groups:
       \call(TX_0b39)\stop
 
       Wake him with
-      the \col(1)Megaphone\col(0) \col(0x84)\item(0x08)\align\col(0)?
-
-      \ws  \opt()Wake him  \opt()No
+      the \col(1)Megaphone\col(0) \col(0x84)\item(0x08)\col(0)?
+        \opt()Wake him \opt()No
 
   - name: TX_0b3b
     index: 0x3b
@@ -3609,8 +3503,7 @@ groups:
       I'll trade my
       \col(1)Wooden Bird\col(0)!
       How about it?
-
-      \ws  \opt()OK   \opt()No way
+        \opt()OK \opt()No way
 
   - name: TX_0b40
     index: 0x40
@@ -3654,8 +3547,7 @@ groups:
       \pos(2)You! That's an
       amazing bird you
       have! May I?
-
-      \ws  \opt()Sure   \opt()No way
+        \opt()Sure \opt()No way
 
   - name: TX_0b45
     index: 0x45
@@ -3689,11 +3581,10 @@ groups:
   - name: TX_0b49
     index: 0x49
     text: >-
-      \col(1)Engine Grease\col(0) \col(0x84)\item(0x0b)\align\col(0)?
+      \col(1)Engine Grease\col(0) \col(0x84)\item(0x0b)\col(0)?
       Will that make
       it go quickly?
-
-      \ws  \opt()Sure  \opt()Maybe not
+        \opt()Sure \opt()Maybe not
 
   - name: TX_0b4a
     index: 0x4a
@@ -3718,7 +3609,7 @@ groups:
   - name: TX_0b4d
     index: 0x4d
     text: >-
-      \pos(2)\sfx(0xc6)Doo, dee, dee \sym(0x1c)\stop
+      \pos(2)\sfx(0xc6)Doo, dee, dee\sym(0x1c)\stop
 
       Hrm!\stop
 
@@ -3728,7 +3619,7 @@ groups:
   - name: TX_0b4e
     index: 0x4e
     text: >-
-      \pos(2)\sfx(0xc6)Doo, dee, dee \sym(0x1c)\stop
+      \pos(2)\sfx(0xc6)Doo, dee, dee\sym(0x1c)\stop
 
       Dee?
 
@@ -3737,9 +3628,8 @@ groups:
     text: >-
       \pos(2)It's staring at
       your
-      \col(1)Phonograph\col(0) \col(0x84)\item(0x0c)\align\col(0).
-
-      \ws  \opt()Play it  \opt()Don't
+      \col(1)Phonograph\col(0) \col(0x84)\item(0x0c)\col(0).
+        \opt()Play it \opt()Don't
 
   - name: TX_0b50
     index: 0x50
@@ -3775,8 +3665,7 @@ groups:
       Biggoron's
       \col(1)secret\col(0).
       Do you know it?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_0b53
     index: 0x53
@@ -3836,8 +3725,7 @@ groups:
       \secret1\stop
 
       Hear it again?
-
-      \ws  \opt()OK  \opt()No thanks
+        \opt()OK \opt()No thanks
 
   - name: TX_0b59
     index: 0x59
@@ -3855,7 +3743,7 @@ groups:
 
       Please! Relax --
       Join our jovial
-      troupe of
+      troupe of\x20
       performers for
       a bit!
 
@@ -4214,7 +4102,7 @@ groups:
       And my heart
       lifts when
       \Link
-      is beside me!
+      is beside me!\x20
       Let us dance!
 
 - group: 0x0d
@@ -4232,11 +4120,9 @@ groups:
   - name: TX_0d01
     index: 0x01
     text: >-
-      \pos(2)\col(1)Magic Potion\col(0)\stop
-
-      \ws 300 Rupees each.
-
-      \ws  \opt()OK  \opt()No thanks\cmd8(0x0d)
+      \pos(2)\col(1)Magic Potion\col(0)
+      300 Rupees each.
+        \opt()OK \opt()No thanks\cmd8(0x0d)
 
   - name: TX_0d02
     index: 0x02
@@ -4265,11 +4151,9 @@ groups:
   - name: TX_0d05
     index: 0x05
     text: >-
-      \pos(2)\col(1)Gasha Seed\col(0)\stop
-
-      \ws 300 Rupees each!
-
-      \ws  \opt()OK  \opt()No thanks\cmd8(0x0e)
+      \pos(2)\col(1)Gasha Seed\col(0)
+      300 Rupees each!
+        \opt()OK \opt()No thanks\cmd8(0x0e)
 
   - name: TX_0d06
     index: 0x06
@@ -4303,11 +4187,9 @@ groups:
   - name: TX_0d0a
     index: 0x0a
     text: >-
-      \pos(2)\col(1)Bombchu\col(0)\stop
-
-      \ws 5 for 100 Rupees
-
-      \ws  \opt()OK  \opt()No thanks\cmd8(0x11)
+      \pos(2)\col(1)Bombchu\col(0)
+      5 for 100 Rupees
+        \opt()OK \opt()No thanks\cmd8(0x11)
 
   - name: TX_0d0b
     index: 0x0b
@@ -4342,7 +4224,7 @@ groups:
       \col(1)Member's Card\col(0).
       Are you curious?
       What's back
-      there is a
+      there is a\x20
       secret!
       Heh heh heh!
 
@@ -4350,28 +4232,22 @@ groups:
     index: 0x02
     text: >-
       \col(1)3 Hearts\col(0)\stop
-
-      \ws 10 Rupees
-
-      \ws  \opt()OK  \opt()No thanks\cmd8(0x0f)
+      10 Rupees
+        \opt()OK \opt()No thanks\cmd8(0x0f)
 
   - name: TX_0e03
     index: 0x03
     text: >-
       \col(1)Wooden Shield\col(0)\stop
-
-      \ws 30 Rupees
-
-      \ws  \opt()OK  \opt()No thanks\cmd8(0x0f)
+      30 Rupees
+        \opt()OK \opt()No thanks\cmd8(0x0f)
 
   - name: TX_0e04
     index: 0x04
     text: >-
       \col(1)10 Bombs\col(0)\stop
-
-      \ws 20 Rupees
-
-      \ws  \opt()OK  \opt()No thanks\cmd8(0x0f)
+      20 Rupees
+        \opt()OK \opt()No thanks\cmd8(0x0f)
 
   - name: TX_0e05
     index: 0x05
@@ -4404,28 +4280,22 @@ groups:
     index: 0x09
     text: >-
       \col(1)Big Seed Satchel\col(0)\stop
-
-      \ws 500 Rupees
-
-      \ws  \opt()OK  \opt()No thanks\cmd8(0x0f)
+      500 Rupees
+        \opt()OK \opt()No thanks\cmd8(0x0f)
 
   - name: TX_0e0a
     index: 0x0a
     text: >-
       \col(1)1 Gasha Seed\col(0)\stop
-
-      \ws 500 Rupees
-
-      \ws  \opt()OK  \opt()No thanks\cmd8(0x0f)
+      500 Rupees
+        \opt()OK \opt()No thanks\cmd8(0x0f)
 
   - name: TX_0e0b
     index: 0x0b
     text: >-
       \col(1)Treasure Map\col(0)\stop
-
-      \ws 200 Rupees
-
-      \ws  \opt()OK  \opt()No thanks\cmd8(0x0f)
+      200 Rupees
+        \opt()OK \opt()No thanks\cmd8(0x0f)
 
   - name: TX_0e0c
     index: 0x0c
@@ -4467,11 +4337,9 @@ groups:
       the right chest
       three times in
       a row!
-
       Each try costs
       10 Rupees.
-
-      \ws  \opt()OK  \opt()No thanks
+        \opt()OK \opt()No thanks
 
   - name: TX_0e10
     index: 0x10
@@ -4493,8 +4361,7 @@ groups:
       do it again,
       you'll get a
       special gift!
-
-      \ws  \opt()OK  \opt()No thanks
+        \opt()OK \opt()No thanks
 
   - name: TX_0e13
     index: 0x13
@@ -4521,8 +4388,7 @@ groups:
       right, you'll
       get an awesome
       gift!
-
-      \ws  \opt()OK  \opt()No thanks
+        \opt()OK \opt()No thanks
 
   - name: TX_0e16
     index: 0x16
@@ -4537,8 +4403,7 @@ groups:
     text: >-
       Too bad. Will
       you try again?
-
-      \ws  \opt()OK  \opt()No thanks
+        \opt()OK \opt()No thanks
 
   - name: TX_0e18
     index: 0x18
@@ -4563,10 +4428,8 @@ groups:
     index: 0x1b
     text: >-
       \col(1)Strange Flute\col(0)\stop
-
-      \ws 150 Rupees
-
-      \ws  \opt()OK  \opt()No thanks\cmd8(0x0f)
+      150 Rupees
+        \opt()OK \opt()No thanks\cmd8(0x0f)
 
   - name: TX_0e1c
     index: 0x1c
@@ -4575,30 +4438,24 @@ groups:
       holds lots of
       \col(1)seeds\col(0). It's
       300 Rupees.
-
-        \opt()OK  \opt()No thanks
+        \opt()OK \opt()No thanks
 
   - name: TX_0e1d
     index: 0x1d
     text: >-
       \col(1)Gasha Seed\col(0)\stop
-
-      \ws \num1 Rupees
-
-      \ws  \opt()OK  \opt()No thanks
+      \num1 Rupees
+        \opt()OK \opt()No thanks
 
   - name: TX_0e1e
     index: 0x1e
     text: >-
       Treasure Map
-
       It may be linked
       to the legendary
       ruins...
-
-      \ws 200 Rupees
-
-      \ws  \opt()OK  \opt()No thanks
+      200 Rupees
+        \opt()OK \opt()No thanks
 
   - name: TX_0e1f
     index: 0x1f
@@ -4640,19 +4497,15 @@ groups:
     index: 0x22
     text: >-
       \col(1)1 Gasha Seed\col(0)\stop
-
-      \ws 100 Rupees
-
-      \ws  \opt()OK  \opt()No thanks\cmd8(0x0f)
+      100 Rupees
+        \opt()OK \opt()No thanks\cmd8(0x0f)
 
   - name: TX_0e23
     index: 0x23
     text: >-
       \col(1)Advance Ring\col(0)\stop
-
-      \ws 100 Rupees
-
-      \ws  \opt()OK  \opt()No thanks\cmd8(0x0f)
+      100 Rupees
+        \opt()OK \opt()No thanks\cmd8(0x0f)
 
   - name: TX_0e24
     index: 0x24
@@ -4670,9 +4523,8 @@ groups:
       \col(1)ring\col(0) it is is
       a secret.\stop
 
-      \ws 100 Rupees
-
-      \ws  \opt()OK  \opt()No thanks\cmd8(0x0f)
+      100 Rupees
+        \opt()OK \opt()No thanks\cmd8(0x0f)
 
   - name: TX_0e26
     index: 0x26
@@ -4699,19 +4551,15 @@ groups:
     index: 0x29
     text: >-
       \col(1)Iron Shield\col(0)\stop
-
-      \ws 50 Rupees
-
-      \ws  \opt()OK  \opt()No thanks\cmd8(0x0f)
+      50 Rupees
+        \opt()OK \opt()No thanks\cmd8(0x0f)
 
   - name: TX_0e2a
     index: 0x2a
     text: >-
       \col(1)Mirror Shield\col(0)\stop
-
-      \ws 80 Rupees
-
-      \ws  \opt()OK  \opt()No thanks\cmd8(0x0f)
+      80 Rupees
+        \opt()OK \opt()No thanks\cmd8(0x0f)
 
 - group: 0x0f
   data:
@@ -4986,8 +4834,7 @@ groups:
       Do you know of
       this land's
       mystical \col(1)rings\col(0)?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_1202
     index: 0x02
@@ -5120,8 +4967,7 @@ groups:
     text: >-
       Do you know of
       the Owl Stones?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_1403
     index: 0x03
@@ -5405,8 +5251,7 @@ groups:
 
       Shall I repeat
       it?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name:
     - TX_1702
@@ -5450,7 +5295,7 @@ groups:
     - 0x04
     - 0x1f
     text: >-
-      \col(4)Hwaaah...
+      Hwaaah...
       It's me, the
       \col(3)Maku Tree\col(4).
       Some of the
@@ -5772,7 +5617,7 @@ groups:
     text: >-
       I, too, grow in
       might under the
-      \col(2)Soothing Rain\col(4)!\stop
+      \col(2)Soothing Rain\col(4)! \stop
 
       I had another
       vision just now.
@@ -5794,7 +5639,6 @@ groups:
       has brought me
       balmy weather,
       too!
-
       I dreamt of a
       huge waterfall
       in the mountains
@@ -5810,7 +5654,7 @@ groups:
       huge waterfall
       in the mountains
       north of \col(3)Sunken
-      City\col(0)...
+      City\col(4)...
       Something may
       be there...
 
@@ -5903,7 +5747,7 @@ groups:
       I must rely on
       you, \Link!
       It lies hidden
-      in \col(3)Holodrum\col(0).
+      in \col(3)Holodrum\col(4).
       Good luck!
 
   - name: TX_1733
@@ -6463,7 +6307,7 @@ groups:
   - name: TX_2001
     index: 0x01
     text: >-
-      \pos(2)\sfx(0xc3)Th- those are my
+      \pos(2)\sfx(0xc3)Th-those are my
       \col(1)gloves\col(0)!
       You brought them
       back? Thank you!
@@ -6472,9 +6316,7 @@ groups:
     index: 0x02
     text: >-
       \pos(2)\sfx(0xc3)In exchange...
-      I'll take
-      you to \col(3)Spool
-      Swamp\col(0).\n
+
       \jump(TX_2009)
     null_terminator: False
 
@@ -6533,15 +6375,14 @@ groups:
     index: 0x08
     text: >-
       \pos(2)\sfx(0xc3)First,
-      I'll take
-      you to \col(3)Spool
-      Swamp\col(0).\n
     null_terminator: False
 
   - name: TX_2009
     index: 0x09
     text: >-
-      Get in
+      I'll take
+      you to \col(3)Spool
+      Swamp\col(0). Get in
       my pouch!
 
   - name: TX_200a
@@ -6638,8 +6479,7 @@ groups:
       Then you can
       pay us for it!
       50 Rupees!
-
-      \ws  \opt()OK   \opt()No way\cmd8(0x1f)
+        \opt()OK \opt()No way\cmd8(0x1f)
 
   - name:
     - TX_2105
@@ -6652,8 +6492,7 @@ groups:
       But 50 Rupees is
       too cheap! Give
       me 30 more!
-
-      \ws  \opt()OK   \opt()No way\cmd8(0x12)
+        \opt()OK \opt()No way\cmd8(0x12)
 
   - name: TX_2107
     index: 0x07
@@ -6815,8 +6654,7 @@ groups:
     text: >-
       Do you have
       \col(1)Bombs\col(0)?
-
-      \ws  \opt()Yes    \opt()No\cmd8(0x13)
+        \opt()Yes \opt()No\cmd8(0x13)
 
   - name: TX_211d
     index: 0x1d
@@ -7121,8 +6959,7 @@ groups:
     text: >-
       Will you bet
       \num1 Rupees?
-    
-      \ws  \opt()OK    \opt()Nah
+        \opt()OK \opt()Nah
 
   - name: TX_2302
     index: 0x02
@@ -7147,10 +6984,8 @@ groups:
       for 20 Rupees.
       And no \col(1)rings\col(0)!
       Only fists!
-
       Got it?
-
-      \ws  \opt()Got it   \opt()No
+        \opt()Got it \opt()No
 
   - name: TX_2304
     index: 0x04
@@ -7220,8 +7055,7 @@ groups:
     index: 0x0c
     text: >-
       Huh? Once more?
-
-      \ws  \opt()Yeah   \opt()No way
+        \opt()Yeah \opt()No way
 
   - name: TX_230d
     index: 0x0d
@@ -7239,10 +7073,8 @@ groups:
       You cheated, so
       the bet goes up
       to 20 Rupees.
-
       Got it?
-
-      \ws  \opt()Yep  \opt()Nope
+        \opt()Yep \opt()Nope
 
 - group: 0x24
   data:
@@ -7542,7 +7374,7 @@ groups:
     index: 0x00
     text: >-
       \pos(1)It's horrible!
-      A \col(3)"temple"\col(0),
+      \col(3)A "temple,"\col(0)
       like, fell into
       \col(3)Subrosia\col(0)!\stop
 
@@ -7564,7 +7396,7 @@ groups:
   - name: TX_2602
     index: 0x02
     text: >-
-      \pos(1)Umm... I, like,
+      \pos(1)Umm...I, like,
       lost something.\stop\n
 
     null_terminator: False
@@ -7598,7 +7430,7 @@ groups:
   - name: TX_2702
     index: 0x02
     text: >-
-      \sym(0x1c) Melt it down \sym(0x1c)!
+      \sym(0x1c)Melt it down\sym(0x1c)!
       These furnaces
       can melt any
       metal!
@@ -7811,8 +7643,7 @@ groups:
       What a cute
       \col(1)Ribbon\col(0).
       Is it for me?
-
-      \ws  \opt()Yep  \opt()Nope
+        \opt()Yep \opt()Nope
 
   - name: TX_2902
     index: 0x02
@@ -7840,8 +7671,7 @@ groups:
     text: >-
       Do you wanna go
       on a date?
-
-      \ws  \opt()Sure   \opt()No way
+        \opt()Sure \opt()No way
 
   - name: TX_2906
     index: 0x06
@@ -7960,7 +7790,7 @@ groups:
     text: >-
       You can dig up
       treasure on this
-      beach...
+      beach...\x20
       \col(1)Star-Shaped Ore\col(0)!
 
   - name: TX_2915
@@ -8023,8 +7853,7 @@ groups:
       Did you come to
       mix the two to
       create \col(1)Hard Ore\col(0)?
-
-      \ws  \opt()Yep  \opt()Nope
+        \opt()Yep  \opt()Nope
 
   - name: TX_2a01
     index: 0x01
@@ -8061,7 +7890,6 @@ groups:
     index: 0x00
     text: >-
       A cute \col(1)Ribbon\col(0)
-
       I'll trade for
       \col(1)Star-Shaped Ore\col(0).
 
@@ -8072,7 +7900,6 @@ groups:
     index: 0x01
     text: >-
       Rare Peach Stone
-
       I'll trade for
       \col(1)\num1 Ore Chunks\col(0)
       and
@@ -8085,7 +7912,6 @@ groups:
     index: 0x02
     text: >-
       A \col(1)Big Bomb Bag\col(0)
-
       I'll trade for
       \col(1)10 Bombs\col(0) and
       \col(1)\num1 Ore Chunks.\col(0)
@@ -8097,7 +7923,6 @@ groups:
     index: 0x03
     text: >-
       A \col(1)seed\col(0) ring
-
       I'll trade for
       \col(1)\num1 Ore Chunks\col(0).
 
@@ -8108,7 +7933,6 @@ groups:
     index: 0x04
     text: >-
       Silver Seed
-
       I'll trade for
       \col(1)\num1 Ore Chunks\col(0)
       and
@@ -8121,7 +7945,6 @@ groups:
     index: 0x05
     text: >-
       A cutting board?
-
       I'll trade for
       \col(1)5 Ember Seeds\col(0).
 
@@ -8132,7 +7955,6 @@ groups:
     index: 0x06
     text: >-
       3 Peaches
-
       I'll trade for
       \col(1)\num1 Ore Chunks\col(0).
 
@@ -8143,7 +7965,6 @@ groups:
     index: 0x07
     text: >-
       10 Bombs
-
       I'll trade for
       \col(1)\num1 Ore Chunks\col(0).
 
@@ -8154,7 +7975,6 @@ groups:
     index: 0x08
     text: >-
       10 Ore Chunks
-
       I'll trade for
       \col(1)20 Gale Seeds\col(0).
 
@@ -8165,7 +7985,6 @@ groups:
     index: 0x09
     text: >-
       4 Ember Seeds
-
       I'll trade for
       \col(1)\num1 Ore Chunks\col(0).
 
@@ -8176,7 +7995,6 @@ groups:
     index: 0x0a
     text: >-
       10 Pegasus Seeds
-
       I'll trade for
       \col(1)\num1 Ore Chunks\col(0).
 
@@ -8186,8 +8004,7 @@ groups:
     index: 0x0b
     text: >-
       How about it?
-
-      \ws  \opt()Sure  \opt()No
+        \opt()Sure \opt()No
 
   - name: TX_2b0c
     index: 0x0c
@@ -8281,8 +8098,8 @@ groups:
       that \col(1)shovel\col(0) to
       dig up treasure.\stop
 
-      Try it everywhere
-      you go!!!
+      Try it every-
+      where you go!!!
 
 - group: 0x2d
   data:
@@ -8304,8 +8121,7 @@ groups:
     index: 0x01
     text: >-
       Vases wanted!
-
-      \ws      Ingo, Collector
+       Ingo, Collector
 
   - name:
     - TX_2e02
@@ -8338,11 +8154,11 @@ groups:
     - 0x06
     - 0x07
     text: >-
-      \up Subrosian Hot
+      \up Subrosian
+         Hot Springs
 
-      \ws   Springs
-
-      \down Subrosian Seaside
+      \down Subrosian
+         Seaside
 
   - name: TX_2e08
     index: 0x08
@@ -8352,12 +8168,11 @@ groups:
   - name: TX_2e09
     index: 0x09
     text: >-
-      \left Subrosian Hot
-
-      \ws   Springs
+      \left Subrosian
+         Hot Springs
 
       \down Subrosian
-      Dance Hall
+         Dance Hall
 
   - name: TX_2e0a
     index: 0x0a
@@ -8388,7 +8203,7 @@ groups:
     text: >-
       \left Spool Swamp
 
-      \ws   Shortcut
+         Shortcut
 
   - name: TX_2e0f
     index: 0x0f
@@ -8407,7 +8222,7 @@ groups:
       Take this
       special gift.
 
-      \ws          Vasu
+       Vasu
 
   - name: TX_2e11
     index: 0x11
@@ -8421,8 +8236,7 @@ groups:
     text: >-
       We carry
       Treasure Maps.
-
-      \ws       Horon Shop
+       Horon Shop
 
   - name: TX_2e13
     index: 0x13
@@ -8430,7 +8244,7 @@ groups:
       Now entering my
       domain!
 
-      \ws    Great Moblin
+       Great Moblin
 
   - name: TX_2e14
     index: 0x14
@@ -8438,22 +8252,19 @@ groups:
       I've gone to
       train.
 
-      \ws        Ricky
+       Ricky
 
   - name: TX_2e15
     index: 0x15
     text: >-
       \up Mayor Ruul's
-
-      \ws   Residence
-
+        Residence
       \right The Maku Tree
 
   - name: TX_2e16
     index: 0x16
     text: >-
       \right Horon Village
-
       \left Hero's Cave
 
   - name: TX_2e17
@@ -8468,14 +8279,14 @@ groups:
     index: 0x18
     text: >-
       \right Danger!
-      Like Likes!
+
+        Like Likes!
 
   - name: TX_2e19
     index: 0x19
     text: >-
       \right Far, far east:
-
-      \ws   Sunken City\stop
+        Sunken City\stop
 
       It's far. Try to
       find a ride.
@@ -8490,8 +8301,7 @@ groups:
     index: 0x1b
     text: >-
       \right Rock Mushrooms
-
-      \ws   (Petri Fungus)
+        (Petri Fungus)
 
       Pick in fall
       only.
@@ -8499,7 +8309,7 @@ groups:
   - name: TX_2e1c
     index: 0x1c
     text: >-
-      \up - Sunken Falls -\stop
+      \up -Sunken Falls-\stop
 
       Headwaters in
       Sunken City
@@ -8509,7 +8319,7 @@ groups:
     text: >-
       Off to Labrynna!
 
-      \ws   Bipin & Blossom
+       Bipin & Blossom
 
   - name: TX_2e1e
     index: 0x1e
@@ -8857,10 +8667,8 @@ groups:
       \col(3)Vasu\col(0) Jewelers.\stop
 
       What can I do?\stop
-
-      \ws  \opt()Appraise  \opt()List
-
-      \ws  \opt()Quit
+        \opt()Appraise \opt()List
+        \opt()Quit
 
   - name: TX_3004
     index: 0x04
@@ -8872,8 +8680,7 @@ groups:
     index: 0x05
     text: >-
       It's 20 Rupees!
-
-      \ws  \opt()Appraise  \opt()Quit
+        \opt()Appraise \opt()Quit
 
   - name: TX_3006
     index: 0x06
@@ -8902,8 +8709,7 @@ groups:
 
       And you want to
       ask about \col(1)rings\col(0)?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_300a
     index: 0x0a
@@ -8911,8 +8717,7 @@ groups:
       Appraisal or
       Ring Boxes...
       Which one?
-
-      \ws  \opt()Appraisal  \opt()Box
+        \opt()Appraisal \opt()Box
 
   - name: TX_300b
     index: 0x0b
@@ -8974,8 +8779,7 @@ groups:
     index: 0x0d
     text: >-
       Take your pick.
-
-      \ws  \opt()Fortune  \opt()Link
+        \opt()Fortune \opt()Link
 
   - name: TX_300e
     index: 0x0e
@@ -8999,8 +8803,7 @@ groups:
       friend. On
       "Ready," you
       both choose.
-
-      \ws  Ready  \opt()Start!
+        Ready  \opt()Start!
 
   - name: TX_300f
     index: 0x0f
@@ -9022,8 +8825,7 @@ groups:
     index: 0x11
     text: >-
       Appraise this?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_3012
     index: 0x12
@@ -9078,8 +8880,7 @@ groups:
     text: >-
       Do you want
       to hear more?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_3017
     index: 0x17
@@ -9099,18 +8900,15 @@ groups:
       or ask about a
       secret. Make
       your choice!\stop
-
-      \ws  \opt()Say   \opt()Ask
-
-      \ws  \opt()Quit
+        \opt()Say \opt()Ask
+        \opt()Quit
 
   - name: TX_3019
     index: 0x19
     text: >-
       "All About
       Ring Secrets."
-
-      \ws  \opt()Read  \opt()Don't
+        \opt()Read \opt()Don't
 
   - name: TX_301a
     index: 0x1a
@@ -9144,8 +8942,7 @@ groups:
       without saving
       your \col(1)secret\col(0)!\stop
 
-      \ws        -- NOTE!! --
-
+               - NOTE!! -
       If you haven't
       finished your
       quest or used a
@@ -9158,7 +8955,6 @@ groups:
     index: 0x1b
     text: >-
       Oh, really?
-
       \jump(TX_3010)
     null_terminator: False
 
@@ -9175,12 +8971,10 @@ groups:
       Listen well!\stop
 
       \secret1
-
       \secret2\stop
 
       Listen again?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_301e
     index: 0x1e
@@ -9202,16 +8996,14 @@ groups:
       fortunes\col(0).
       Would you like a
       \col(3)ring fortune\col(0)?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_3020
     index: 0x20
     text: >-
       "Ring Link
       Basics"
-
-      \ws  \opt()Read  \opt()Don't
+        \opt()Read \opt()Don't
 
   - name: TX_3021
     index: 0x21
@@ -9245,24 +9037,20 @@ groups:
       I manage the
       Game Link cable.
       What shall I do?\stop
-
-      \ws  \opt()Fortune  \opt()Link
-
-      \ws  \opt()Nothing
+        \opt()Fortune  \opt()Link
+        \opt()Nothing
 
   - name: TX_3025
     index: 0x25
     text: >-
       Pick a topic.\stop
-
-      \ws  \opt()Fortune  \opt()Link
-
-      \ws  \opt()Nothing
+        \opt()Fortune \opt()Link
+        \opt()Nothing
 
   - name: TX_3026
     index: 0x26
     text: >-
-      \ws     About Ring Links\stop
+      About Ring Links\stop
 
       With a Game Link
       cable and two
@@ -9302,8 +9090,7 @@ groups:
       Ages game you
       are playing.\stop
 
-      \ws       -- NOTE!!! --
-
+            -- NOTE!!! --
       If you haven't
       finished this
       quest before or
@@ -9312,8 +9099,7 @@ groups:
       you cannot \col(1)link\col(0).\stop
 
       Read more?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_3027
     index: 0x27
@@ -9341,8 +9127,7 @@ groups:
       ON.
       Choose Begin
       when ready!
-
-      \ws  \opt()Begin!
+        \opt()Begin!
 
   - name: TX_3029
     index: 0x29
@@ -9445,7 +9230,6 @@ groups:
 
       You have slain
       1000 monsters!
-
       \jump(TX_3035)
     null_terminator: False
 
@@ -9456,7 +9240,6 @@ groups:
 
       You've collected
       10,000 Rupees!
-
       \jump(TX_3035)
     null_terminator: False
 
@@ -9469,7 +9252,6 @@ groups:
       rings appraised!
       \col(3)Vasu\col(0) appreciates
       your business!
-
       \jump(TX_3035)
     null_terminator: False
 
@@ -9481,7 +9263,6 @@ groups:
       You have saved
       the world! You
       are a true hero!
-
       \jump(TX_3035)
     null_terminator: False
 
@@ -9505,8 +9286,7 @@ groups:
       and you won't
       be able to use
       it. Understood?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_303b
     index: 0x3b
@@ -9525,7 +9305,7 @@ groups:
   - name: TX_303d
     index: 0x3d
     text: >-
-      \ws       Ring Fortunes\stop
+      Ring Fortunes\stop
 
       Through a \col(3)Ring
       Fortune\col(0) you and
@@ -9552,7 +9332,7 @@ groups:
       suits your
       friendship.\stop
 
-      \ws       -- Warning --
+            -- Warning --
 
       You cannot do
       it alone.\stop
@@ -9563,8 +9343,7 @@ groups:
       played.\stop
 
       Read others?
-
-      \ws  \opt()Read  \opt()Don't
+        \opt()Read \opt()Don't
 
   - name: TX_303e
     index: 0x3e
@@ -9951,12 +9730,12 @@ groups:
   - name: TX_3087
     index: 0x87
     text: >-
-      Sword damage x2
+      Sword damage x 2
 
   - name: TX_3088
     index: 0x88
     text: >-
-      Damage taken = 1/2
+      Damage taken=1/2
 
   - name: TX_3089
     index: 0x89
@@ -9969,8 +9748,7 @@ groups:
     index: 0x8a
     text: >-
       1/2 Sword damage
-
-      Damage taken x2
+      Damage taken x 2
 
   - name: TX_308b
     index: 0x8b
@@ -10293,7 +10071,6 @@ groups:
     index: 0xc1
     text: >-
       \call(0xfd)
-
       \call(0xfc)
 
 - group: 0x31
@@ -10347,8 +10124,7 @@ groups:
     index: 0x02
     text: >-
       Need anything?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_3103
     index: 0x03
@@ -10385,8 +10161,7 @@ groups:
       \secret1\stop
 
       Did you get it?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_3107
     index: 0x07
@@ -10449,16 +10224,14 @@ groups:
     text: >-
       Want to learn a
       \col(1)hero's skill\col(0)?
-
-      \ws  \opt()Yes    \opt()Not really
+        \opt()Yes \opt()Not really
 
   - name: TX_3201
     index: 0x01
     text: >-
       Want to learn
       \col(1)shield\col(0) tactics?
-
-      \ws  \opt()Yes    \opt()Not really
+        \opt()Yes \opt()Not really
 
   - name: TX_3202
     index: 0x02
@@ -10466,48 +10239,42 @@ groups:
       Want to learn
       about the
       \col(1)Mystical Seeds\col(0)?
-
-      \ws  \opt()Yes    \opt()Not really
+        \opt()Yes \opt()Not really
 
   - name: TX_3203
     index: 0x03
     text: >-
       Want to learn
       about \col(1)Bombs\col(0)?
-
-      \ws  \opt()Yes    \opt()Not really
+        \opt()Yes \opt()Not really
 
   - name: TX_3204
     index: 0x04
     text: >-
       Want to learn
       about \col(1)items\col(0)?
-
-      \ws  \opt()Yes    \opt()Not really
+        \opt()Yes \opt()Not really
 
   - name: TX_3205
     index: 0x05
     text: >-
       Want to learn
       about \col(1)maps\col(0)?
-
-      \ws  \opt()Yes    \opt()Not really
+        \opt()Yes \opt()Not really
 
   - name: TX_3206
     index: 0x06
     text: >-
       Want to learn
       about \col(1)saving\col(0)?
-
-      \ws  \opt()Yes    \opt()Not really
+        \opt()Yes \opt()Not really
 
   - name: TX_3207
     index: 0x07
     text: >-
       Want to learn
       about \col(1)seasons\col(0)?
-
-      \ws  \opt()Yes    \opt()Not really
+        \opt()Yes \opt()Not really
 
   - name: TX_3208
     index: 0x08
@@ -10515,16 +10282,14 @@ groups:
       Want to learn
       about the
       \col(1)Subscreens\col(0)?
-
-      \ws  \opt()Yes    \opt()Not really
+        \opt()Yes \opt()Not really
 
   - name: TX_3209
     index: 0x09
     text: >-
       Want to learn
       about \col(1)essences\col(0)?
-
-      \ws  \opt()Yes    \opt()Not really
+        \opt()Yes \opt()Not really
 
   - name: TX_320a
     index: 0x0a
@@ -10571,7 +10336,7 @@ groups:
       \col(1)Bomb\col(0) out, press
       the button again
       to place it.
-      Press \col(0x84)\item(0x00) \col(0)to
+      Press \col(0x84)\item(0x00)\col(0) to
       throw a \col(1)Bomb\col(0) in
       that direction.
       Press the button
@@ -10607,8 +10372,8 @@ groups:
   - name: TX_3210
     index: 0x10
     text: >-
-      Open the Subscreen
-      and press
+      Open the Sub-
+      screen and press
       SELECT twice to
       see the Essence
       Screen. Next,
@@ -10708,10 +10473,8 @@ groups:
       for the true
       hero. It costs
       60 Rupees.
-
       Will you try?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_3304
     index: 0x04
@@ -10807,8 +10570,7 @@ groups:
     text: >-
       You can plant a
       \col(1)Gasha Seed\col(0).
-
-      \ws  \opt()Plant  \opt()Don't
+        \opt()Plant \opt()Don't
 
   - name: TX_3501
     index: 0x01
@@ -10827,7 +10589,7 @@ groups:
   - name: TX_3503
     index: 0x03
     text: >-
-      Inside was a
+      Inside was a\x20
       \col(1)Piece of
       Heart\col(0)!\heartpiece
       Check it on the
@@ -10836,32 +10598,32 @@ groups:
   - name: TX_3504
     index: 0x04
     text: >-
-      A \col(1)ring\col(0) was
-      inside!
+      A \col(1)ring\col(0) was\jump(TX_3502)
+    null_terminator: False
 
   - name: TX_3505
     index: 0x05
     text: >-
-      A \col(1)Potion\col(0) was
-      inside!
+      A \col(1)Potion\col(0) was\jump(TX_3502)
+    null_terminator: False
 
   - name: TX_3506
     index: 0x06
     text: >-
-      \col(1)200 Rupees\col(0) were
-      inside!
+      \col(1)200 Rupees\col(0) were\jump(TX_3502)
+    null_terminator: False
 
   - name: TX_3507
     index: 0x07
     text: >-
-      \col(1)5 hearts\col(0) were
-      inside!
+      \col(1)5 hearts\col(0) were\jump(TX_3502)
+    null_terminator: False
 
   - name: TX_3508
     index: 0x08
     text: >-
-      A \col(1)fairy\col(0) was
-      inside!
+      A \col(1)fairy\col(0) was\jump(TX_3502)
+    null_terminator: False
 
   - name: TX_3509
     index: 0x09
@@ -10958,8 +10720,8 @@ groups:
     text: >-
       \sfx(0xc7)\col(3)Goron Mountain\col(0)
       has always had
-      winter year-round,
-      but ever
+      winter year-
+      round, but ever
       since the \col(3)Temple
       of Seasons\col(0) sank,
       it's gotten even
@@ -11020,8 +10782,7 @@ groups:
       shall I make it
       so you can carry
       more \col(1)rings\col(0)?
-
-      \ws  \opt()Yes!  \opt()No
+        \opt()Yes! \opt()No
 
   - name: TX_370a
     index: 0x0a
@@ -11181,8 +10942,8 @@ groups:
       When the mouth
       opens, attack
       from within.
-      Then super-human
-      strength
+      Then super-
+      human strength
       will prevail.
 
   - name: TX_390e
@@ -11718,8 +11479,7 @@ groups:
       been left
       behind. Do ya
       know the secret?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_3a2d
     index: 0x2d
@@ -11732,7 +11492,7 @@ groups:
   - name: TX_3a2e
     index: 0x2e
     text: >-
-      Then yer a
+      Then yer a\x20
       lucky bloke!
       Teach me!
 
@@ -11787,12 +11547,10 @@ groups:
       bringin' yer
       luck with ya
       to \col(3)Labrynna\col(0).
-
       \secret1\stop
 
       Got that?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_3a34
     index: 0x34
@@ -11859,7 +11617,6 @@ groups:
     index: 0x39
     text: >-
       \call(TX_3a35)
-
       \jump(TX_3a36)
     null_terminator: False
 
@@ -11867,7 +11624,6 @@ groups:
     index: 0x3a
     text: >-
       \call(TX_3a35)
-
       \jump(TX_3a37)
     null_terminator: False
 
@@ -11922,8 +11678,7 @@ groups:
       offered to
       polish it, but
       should he?
-
-      \ws  \opt()Please  \opt()Do it!
+        \opt()Please \opt()Do it!
 
   - name: TX_3b04
     index: 0x04
@@ -11980,12 +11735,11 @@ groups:
     text: >-
       \call(TX_3b14)\stop
 
-      So what'll it
+      So what'll it\x20
       be?\stop
 
-      \ws  \opt()Make it fine!
-
-      \ws  \opt()Do whatever.
+        \opt()Make it fine!
+        \opt()Do whatever.
 
   - name: TX_3b0b
     index: 0x0b
@@ -12020,8 +11774,7 @@ groups:
       you the \col(1)secret\col(0)
       for getting your
       \col(1)shield\col(0) forged?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_3b0f
     index: 0x0f
@@ -12090,8 +11843,7 @@ groups:
       \secret1\stop
 
       Got it?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_3b17
     index: 0x17
@@ -12579,10 +12331,10 @@ groups:
   - name: TX_3e12
     index: 0x12
     text: >-
-      \sym(0x1c) Diggin' around
-      for \col(1)Ore Chunks\col(0) \sym(0x1c)
-      \sym(0x1c) Diggin' down
-      for more chunks \sym(0x1c)
+      \sym(0x1c)Diggin' around
+      for \col(1)Ore Chunks\col(0)\sym(0x1c)
+      \sym(0x1c)Diggin' down
+      for more chunks\sym(0x1c)
 
   - name: TX_3e13
     index: 0x13
@@ -12885,8 +12637,7 @@ groups:
       \col(1)Blue Ore\col(0) there!
       Shall I make
       \col(1)Hard Ore\col(0)?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_4001
     index: 0x01
@@ -12936,8 +12687,7 @@ groups:
       Seasons\col(0).
       Have you some
       errand?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_4102
     index: 0x02
@@ -12996,8 +12746,7 @@ groups:
     index: 0x02
     text: >-
       Are you strong?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_4203
     index: 0x03
@@ -13244,8 +12993,7 @@ groups:
     text: >-
       You would name
       him \col(3)\Child\col(0)?
-
-      \ws  \opt()Yes  \opt()Maybe not
+        \opt()Yes \opt()Maybe not
 
   - name: TX_4408
     index: 0x08
@@ -13277,7 +13025,7 @@ groups:
     index: 0x0b
     text: >-
       \col(3)\Child\col(0) looks
-      a little
+      a little\x20
       strange.\stop
 
       I want to take
@@ -13286,18 +13034,15 @@ groups:
       Rupees...
       Could you please
       lend us some?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_440c
     index: 0x0c
     text: >-
       Really? How much
       can you lend us?
-
-      \ws  \opt()150    \opt()50
-
-      \ws  \opt()10     \opt()1
+        \opt()150 \opt()50
+        \opt()10  \opt()1
 
   - name: TX_440d
     index: 0x0d
@@ -13346,15 +13091,12 @@ groups:
     index: 0x13
     text: >-
       My baby never
-      sleeps.\stop
+      sleeps. \Link,\stop
 
-      \Link,
       how can I get
       him to sleep?
-
-      \ws  \opt()Sing a song
-
-      \ws  \opt()Play with him
+        \opt()Sing a song
+        \opt()Play with him
 
   - name: TX_4414
     index: 0x14
@@ -13402,8 +13144,7 @@ groups:
       Were you a
       hyperactive
       child, \Link?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_441a
     index: 0x1a
@@ -13417,8 +13158,7 @@ groups:
 
       An energetic
       one?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_441b
     index: 0x1b
@@ -13432,8 +13172,7 @@ groups:
 
       An energetic
       one?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_441c
     index: 0x1c
@@ -13446,8 +13185,7 @@ groups:
     index: 0x1d
     text: >-
       Quiet, perhaps?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_441e
     index: 0x1e
@@ -13459,8 +13197,7 @@ groups:
     index: 0x1f
     text: >-
       Were you weird?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_4420
     index: 0x20
@@ -13658,7 +13395,6 @@ groups:
       do business in
       peace!
       Now then...
-
       \jump(TX_450a)
     null_terminator: False
 
@@ -13733,15 +13469,13 @@ groups:
       Buy something!
       A \col(1)Shield\col(0) for
       \num1 Rupees?
-
-      \ws  \opt()OK  \opt()No thanks
+        \opt()OK \opt()No thanks
 
   - name: TX_450b
     index: 0x0b
     text: >-
       \sfx(0xc6)Greetings!
       Since you came,
-
       \jump(TX_450a)
     null_terminator: False
 
@@ -13752,8 +13486,7 @@ groups:
       Here's a deal!
       10 Ember Seeds
       for 20 Rupees!
-
-      \ws  \opt()OK  \opt()No thanks
+        \opt()OK \opt()No thanks
 
   - name: TX_450d
     index: 0x0d
@@ -13762,8 +13495,7 @@ groups:
       Here's a deal!
       \col(1)10 Bombs\col(0)
       for 30 Rupees!
-
-      \ws  \opt()OK  \opt()No thanks
+        \opt()OK \opt()No thanks
 
 - group: 0x46
   data:
@@ -13784,8 +13516,7 @@ groups:
       Say, which is
       more important,
       love or courage?
-
-      \ws  \opt()Love  \opt()Courage
+        \opt()Love \opt()Courage
 
   - name: TX_4602
     index: 0x02
@@ -13803,8 +13534,7 @@ groups:
       is now finished!\stop
 
       Will you listen?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_4604
     index: 0x04
@@ -13846,8 +13576,7 @@ groups:
     text: >-
       Do you have
       a girlfriend?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_4703
     index: 0x03
@@ -14018,8 +13747,7 @@ groups:
       Which was first,
       the chicken or
       the egg?
-
-      \ws  \opt()Chicken  \opt()Egg
+        \opt()Chicken \opt()Egg
 
   - name: TX_4903
     index: 0x03
@@ -14070,22 +13798,19 @@ groups:
       What will make
       me mightier?
       Training daily?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_4a02
     index: 0x02
     text: >-
       Natural talent?
- 
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_4a03
     index: 0x03
     text: >-
       A caring heart?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_4a04
     index: 0x04
@@ -14139,18 +13864,15 @@ groups:
 
       So can you make
       a contribution?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_4b02
     index: 0x02
     text: >-
       How much can
       you contribute?
-
-      \ws  \opt()100  \opt()50
-
-      \ws  \opt()10    \opt()1
+        \opt()100 \opt()50
+        \opt()10  \opt()1
 
   - name: TX_4b03
     index: 0x03
@@ -14227,8 +13949,7 @@ groups:
     index: 0x00
     text: >-
       Did you need me?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name:
     - TX_4c01
@@ -14252,8 +13973,7 @@ groups:
       shall give your
       \col(1)sword\col(0) new power!
       Will you try?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_4c04
     index: 0x04
@@ -14275,10 +13995,8 @@ groups:
       without being
       slain yourself,
       of course.
-
       Got it?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_4c06
     index: 0x06
@@ -14301,8 +14019,7 @@ groups:
     index: 0x09
     text: >-
       \pos(1)Try it again?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_4c0a
     index: 0x0a
@@ -14331,8 +14048,7 @@ groups:
       \secret1\stop
 
       I can repeat it!
-
-      \ws  \opt()Sure  \opt()No thanks
+        \opt()Sure \opt()No thanks
 
   - name: TX_4c0d
     index: 0x0d
@@ -14346,8 +14062,7 @@ groups:
     text: >-
       Are you ready to
       take my test?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_4c0f
     index: 0x0f
@@ -14358,8 +14073,7 @@ groups:
       in my bedroom?
       Are you on
       some errand?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_4c10
     index: 0x10
@@ -14382,7 +14096,6 @@ groups:
       do well, I'll
       increase your
       strength!
-
       \jump(TX_4c14)
     null_terminator: False
 
@@ -14402,8 +14115,7 @@ groups:
     index: 0x14
     text: >-
       Will you try it?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_4c15
     index: 0x15
@@ -14429,8 +14141,7 @@ groups:
       let passing one
       go to your head.
       You got it?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_4c16
     index: 0x16
@@ -14443,8 +14154,7 @@ groups:
       \pos(1)Now then, which
       were there more
       of, \col(1)red\col(0) or \col(3)blue\col(0)?
-
-      \ws  \opt()\col(1)Red\col(0)  \opt()\col(3)Blue
+        \opt()\col(1)Red\col(0) \opt()\col(3)Blue
 
   - name: TX_4c18
     index: 0x18
@@ -14452,8 +14162,7 @@ groups:
       \pos(1)Wrong! Were your
       eyes even open?
       Wanna try again?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_4c19
     index: 0x19
@@ -14488,8 +14197,7 @@ groups:
       \secret1\stop
 
       Got it?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_4c1c
     index: 0x1c
@@ -14509,8 +14217,7 @@ groups:
     text: >-
       You wanted to
       say something?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_4c1f
     index: 0x1f
@@ -14535,8 +14242,7 @@ groups:
       news! Say, could
       you do me one
       more favor?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_4c22
     index: 0x22
@@ -14556,10 +14262,8 @@ groups:
       \col(1)Boomerang\col(0)?
       ...In only three
       throws???
-
       Can you do it?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_4c24
     index: 0x24
@@ -14578,8 +14282,7 @@ groups:
       so I'll give you
       another chance.
       How about it?
-
-      \ws  \opt()OK  \opt()Maybe not
+        \opt()OK \opt()Maybe not
 
   - name: TX_4c27
     index: 0x27
@@ -14591,7 +14294,6 @@ groups:
     text: >-
       You didn't cut
       all the grass!
-
       \jump(TX_4c26)
     null_terminator: False
 
@@ -14625,8 +14327,7 @@ groups:
       \secret1\stop
 
       Got it?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_4c2d
     index: 0x2d
@@ -14640,8 +14341,7 @@ groups:
     text: >-
       Pupil! Do you
       need something?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_4c2f
     index: 0x2f
@@ -14670,8 +14370,7 @@ groups:
       If you can pass
       my test! Will
       you try?
-
-      \ws  \opt()OK  \opt()No
+        \opt()OK \opt()No
 
   - name: TX_4c32
     index: 0x32
@@ -14699,8 +14398,7 @@ groups:
       it before time
       runs out, you'll
       get a prize!
-
-      \ws  \opt()OK  \opt()No thanks
+        \opt()OK \opt()No thanks
 
   - name: TX_4c35
     index: 0x35
@@ -14719,13 +14417,11 @@ groups:
   - name: TX_4c37
     index: 0x37
     text: >-
-      You took \col(4)\num1:\num2\col(0)!
+      \col(4)You took \num1:\num2\col(0)!
       Too bad!!!
-
       Do you want to
       try it again?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_4c38
     index: 0x38
@@ -14759,8 +14455,7 @@ groups:
     text: >-
       Will you take
       my challenge?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name:
     - TX_4c3d
@@ -14772,7 +14467,6 @@ groups:
       You threw the
       \col(1)Boomerang\col(0)
       too many times!
-
       \jump(TX_4c26)
     null_terminator: False
 
@@ -14790,13 +14484,12 @@ groups:
       the hit \col(1)secret\col(0)
       among us \col(3)Deku
       Scrubs\col(0).
-      "\sym(0x1c) Love, love
-      the seed! \sym(0x1c)"
+      "\sym(0x1c)Love, love
+      the seed!\sym(0x1c)"
       What's the
       next part?
       Do you know it?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_4c41
     index: 0x41
@@ -14853,8 +14546,7 @@ groups:
       \secret1\stop
 
       I can repeat it!
-
-      \ws  \opt()OK  \opt()No thanks
+        \opt()OK \opt()No thanks
 
   - name: TX_4c47
     index: 0x47
@@ -14868,8 +14560,7 @@ groups:
       \call(TX_4c4a)\stop
 
       Don't you agree?
-
-      \ws  \opt()Yes    \opt()No
+         \opt()Yes \opt()No
 
   - name: TX_4c49
     index: 0x49
@@ -14882,8 +14573,8 @@ groups:
   - name: TX_4c4a
     index: 0x4a
     text: >-
-      \sfx(0xc6)"\sym(0x1c) Love, love
-      the seed! \sym(0x1c)"
+      \sfx(0xc6)"\sym(0x1c)Love, love
+      the seed!\sym(0x1c)"
       What a great
       song!
 
@@ -14924,7 +14615,6 @@ groups:
       I been waitin',
       matey! Now let's
       find that \col(1)bell\col(0).
-
       \jump(TX_4d03)
     null_terminator: False
 
@@ -14966,7 +14656,7 @@ groups:
     index: 0x08
     text: >-
       \pos(0)Uh-oh! That's
-      \col(3)Cap'n\col(0)'s \col(1)bell\col(0),
+      \col(3)Cap'n's\col(0) \col(1)bell\col(0),
       but I hope
       that'll do.\stop
 
@@ -15101,8 +14791,8 @@ groups:
   - name: TX_4e10
     index: 0x10
     text: >-
-      \pos(0)You call yourselves
-      pirates?
+      \pos(0)You call your-
+      selves pirates?
       Shameful fools!
       Getting sick the
       moment you set
@@ -15123,7 +14813,7 @@ groups:
     index: 0x12
     text: >-
       \pos(2)Oooh...
-      S- set anchor...
+      S-set anchor...
 
   - name: TX_4e13
     index: 0x13
@@ -15406,7 +15096,7 @@ groups:
   - name: TX_5007
     index: 0x07
     text: >-
-      \col(4)This is awful!\stop
+      This is awful!\stop
 
       \col(3)Twinrova\col(4) is
       behind \col(3)Onox\col(4)...
@@ -15426,9 +15116,8 @@ groups:
       Steal the fruits
       of the ravaged
       lands of
-      \col(3)Holodrum\col(0)...
-
-      \col(4)Raze the earth!
+      \col(3)Holodrum\col(4)...
+      Raze the earth!
       Oh ho ho ho!
 
   - name: TX_5009
@@ -15572,7 +15261,7 @@ groups:
     text: >-
       \pos(3)If we sacrifice
       \col(3)Zelda\col(0), all will
-      fall into
+      fall into\x20
       despair...\stop
 
       Ho ho ho ho!
@@ -15724,7 +15413,6 @@ groups:
     text: >-
       This block has
       cracks in it.
-
       \jump(TX_5107)
     null_terminator: False
 
@@ -15869,8 +15557,7 @@ groups:
       power will be
       unleashed! Do
       you understand?
-
-      \ws  \opt()Yes    \opt()Not really
+        \opt()Yes \opt()Not really
 
   - name: TX_5207
     index: 0x07
@@ -15917,11 +15604,11 @@ groups:
   - name: TX_520a
     index: 0x0a
     text: >-
-      \sym(0x1c)\col(3) Princess Zelda\col(0)
-      Hope for all \sym(0x1c)
-      \sym(0x1c) Alas!
+      \sym(0x1c)\col(3)Princess Zelda\col(0)
+      Hope for all\sym(0x1c)
+      \sym(0x1c)Alas!
       You've been
-       taken! \sym(0x1c)
+       taken!\sym(0x1c)
 
 - group: 0x53
   data:
@@ -15937,8 +15624,7 @@ groups:
       \col(3)Labrynna's\col(0) seas.
       So will you hear
       my request?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name:
     - TX_5301
@@ -15953,8 +15639,7 @@ groups:
       \col(3)King Zora\col(0) in
       \col(3)Labrynna's\col(0) seas.
       Understood?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_5302
     index: 0x02
@@ -15965,8 +15650,7 @@ groups:
       \secret1\stop
 
       Understood?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_5303
     index: 0x03
@@ -15995,10 +15679,8 @@ groups:
       in \col(3)Labrynna's\col(0)
       \col(3)Fairy's Woods\col(0)
       taught me.
-
       What do you say?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_5307
     index: 0x07
@@ -16006,7 +15688,6 @@ groups:
       This is just
       since you're so
       cool, \Link!
-
       \jump(TX_530b)
     null_terminator: False
 
@@ -16019,8 +15700,7 @@ groups:
       \secret1\stop
 
       Got it?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_5309
     index: 0x09
@@ -16043,8 +15723,7 @@ groups:
       in \col(3)Labrynna\col(0),
       you can be even
       happier! Got it?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_530c
     index: 0x0c
@@ -16055,8 +15734,7 @@ groups:
       biologist!
       Listen to my
       request!
-
-      \ws  \opt()OK   \opt()No way
+        \opt()OK \opt()No way
 
   - name:
     - TX_530d
@@ -16072,8 +15750,7 @@ groups:
       on \col(3)Rolling Ridge\col(0)
       in \col(3)Labrynna\col(0)!
       You got that?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_530e
     index: 0x0e
@@ -16083,8 +15760,7 @@ groups:
       \secret1\stop
 
       Understand?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_530f
     index: 0x0f
@@ -16102,8 +15778,7 @@ groups:
     text: >-
       Hey! Can I ask
       you a favor?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name:
     - TX_5313
@@ -16122,8 +15797,7 @@ groups:
       do it myself...
       Can you tell him
       this \col(1)secret\col(0)?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_5314
     index: 0x14
@@ -16134,8 +15808,7 @@ groups:
 
       Can you tell
       him?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_5315
     index: 0x15
@@ -16153,8 +15826,7 @@ groups:
     text: >-
       Can you hear
       my regret?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name:
     - TX_5319
@@ -16176,8 +15848,7 @@ groups:
       hear \col(1)secret\col(0).
       Hear my \col(1)secret\col(0)!
       You understand?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_531a
     index: 0x1a
@@ -16187,8 +15858,7 @@ groups:
       \secret1\stop
 
       Understand?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_531b
     index: 0x1b
@@ -16209,8 +15879,7 @@ groups:
       I heard a rare
       \col(1)secret\col(0). Do you
       want to hear it?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name:
     - TX_531f
@@ -16224,8 +15893,7 @@ groups:
       Tokay people in
       \col(3)Labrynna\col(0)!
       Understand?
-
-      \ws  \opt()Yes \opt()Once more
+        \opt()Yes \opt()Once more
 
   - name: TX_5320
     index: 0x20
@@ -16235,8 +15903,7 @@ groups:
       \secret1\stop
 
       Understand?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_5321
     index: 0x21
@@ -16261,8 +15928,7 @@ groups:
       too, but we met
       here by chance.
       Can you help me?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name:
     - TX_5325
@@ -16276,8 +15942,7 @@ groups:
       my daughter,
       \col(3)Mamamu Yan\col(0), in
       \col(3)Labrynna\col(0)?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_5326
     index: 0x26
@@ -16287,8 +15952,7 @@ groups:
       \secret1\stop
 
       OK?
-
-      \ws  \opt()OK  \opt()Not OK
+        \opt()OK \opt()Not OK
 
   - name: TX_5327
     index: 0x27
@@ -16308,8 +15972,7 @@ groups:
       Great timing!
       Can I ask a
       favor of you?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name:
     - TX_532b
@@ -16327,8 +15990,7 @@ groups:
       you to tell him
       a \col(1)secret\col(0).
       Understand?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_532c
     index: 0x2c
@@ -16338,8 +16000,7 @@ groups:
       \secret1\stop
 
       Understand?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_532d
     index: 0x2d
@@ -16372,8 +16033,7 @@ groups:
       \col(1)secret\col(0) in the
       diary. Could you
       research this?
-
-      \ws  \opt()Sure  \opt()Sorry
+        \opt()Sure \opt()Sorry
 
   - name: TX_5333
     index: 0x33
@@ -16383,8 +16043,7 @@ groups:
       \secret1\stop
 
       Did you get it?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_5334
     index: 0x34
@@ -16403,10 +16062,9 @@ groups:
     index: 0x36
     text: >-
       Hi, \Link!
-      Can I ask something
-      of you?
-
-      \ws  \opt()Yes    \opt()No
+      Can I ask some-
+      thing of you?
+        \opt()Yes \opt()No
 
   - name:
     - TX_5337
@@ -16429,8 +16087,7 @@ groups:
       written so long
       ago, they may be
       gone. OK?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_5338
     index: 0x38
@@ -16438,10 +16095,8 @@ groups:
       The \col(1)secret\col(0) is:\stop
 
       \secret1\stop
-
       Understand?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_5339
     index: 0x39
@@ -16494,8 +16149,7 @@ groups:
 
       Do you know any
       \col(1)secrets\col(0)?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_5503
     index: 0x03
@@ -16527,8 +16181,7 @@ groups:
       Do you know the
       \col(1)secret\col(0) to moving
       through time?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_5508
     index: 0x08
@@ -16570,7 +16223,6 @@ groups:
     text: >-
       You told me this
       \col(1)secret\col(0) already.
-
       \jump(TX_5505)
     null_terminator: False
 
@@ -16578,8 +16230,7 @@ groups:
     index: 0x0d
     text: >-
       \pos(3)Save and quit?
-
-      \ws  \opt()No    \opt()Yes
+        \opt()No \opt()Yes
 
   - name: TX_550e
     index: 0x0e
@@ -16589,20 +16240,19 @@ groups:
       as if you told
       me no \col(1)secrets\col(0).
       Is this OK?
-
-      \ws  \opt()No    \opt()Yes
+        \opt()No \opt()Yes
 
   - name: TX_550f
     index: 0x0f
     text: >-
       \slow()Behind the
-      Clock Shop
+       Clock Shop
 
   - name: TX_5510
     index: 0x10
     text: >-
       \slow()Grave with no
-      Spring Flowers
+       Spring Flowers
 
   - name: TX_5511
     index: 0x11
@@ -16620,13 +16270,13 @@ groups:
     index: 0x13
     text: >-
       \slow()To the Master
-      Smith
+       Smith
 
   - name: TX_5514
     index: 0x14
     text: >-
       \slow()Charm for the
-      Unlucky Sailor
+       Unlucky Sailor
 
   - name: TX_5515
     index: 0x15
@@ -16638,13 +16288,13 @@ groups:
     index: 0x16
     text: >-
       \slow()West \col(3)Sunken City\col(0)
-      \col(3)Deku's\col(0) Song
+       \col(3)Deku's\col(0) Song
 
   - name: TX_5517
     index: 0x17
     text: >-
       \slow()Advice for
-      \col(3)Biggoron\col(0)
+       \col(3)Biggoron\col(0)
 
   - name: TX_5518
     index: 0x18
@@ -16658,24 +16308,20 @@ groups:
       know the
       \col(1)secret to going
       to Labrynna\col(0)?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_551a
     index: 0x1a
     text: >-
       \secret1
-
       \secret2
 
   - name: TX_551b
     index: 0x1b
     text: >-
       Farore's Memory
-
       Read this book?
-
-      \ws  \opt()Yes    \opt()No
+        \opt()Yes \opt()No
 
   - name: TX_551c
     index: 0x1c

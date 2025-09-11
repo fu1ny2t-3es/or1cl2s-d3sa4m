@@ -948,3 +948,12 @@ m_section_free Bank3f NAMESPACE bank3f
 	.include {"{GAME_DATA_DIR}/treasureDisplayData.s"}
 
 .ends
+
+
+; VWF: This doesn't fit in Bank 3f, so put it in a superfree section
+.SECTION TextSpacing SUPERFREE
+
+textSpacing:
+	.incbin {"{BUILD_DIR}/font_spacing.bin"}
+
+.ENDS
